@@ -6,24 +6,24 @@ Increase in population is determined by dot interaction (event based), while dec
 1. Initial settings page with variable initialization like initial population, initial chance of death, initial chance of reproduction, etc.
 2. As years progress, population changes, the user can "pause" the simulation to view population age group
 3. Movement:
- * Bouncing dots
+   * Bouncing dots
 4. Age:
- * Dots slow down as age increases
- * Dots change color throughout age
+   * Dots slow down as age increases
+   * Dots change color throughout age
 5. Death:
- * 60+ chance of death increase
- * 90+ chance of natural death increases exponentially
+   * 60+ chance of death increase
+   * 90+ chance of natural death increases exponentially
 6. Obstacles:
- * Dot hazard - death
-  * Chance increases as dot is older
- * Offspring hazards - birth (based on collision)
-  * Age requirement - ~18-38
+   * Dot hazard - death
+     * Chance increases as dot is older
+   * Offspring hazards - birth (based on collision)
+     * Age requirement - ~18-38
 7. Population Density:
- * No management currently
+   * No management currently
 8. Data Analysis:
- * User can select to view statistics from last simulation
-  * Histogram of age spread of population
-  * Display of averages - deaths, births, increase in population per year
+   * User can select to view statistics from last simulation
+     * Histogram of age spread of population
+     * Display of averages - deaths, births, increase in population per year
  
 ## DELIVERY
 Project viewing will be inside of Intellij IDEA. Major milestone delivers may deployed via a JAR file
@@ -33,6 +33,6 @@ Project viewing will be inside of Intellij IDEA. Major milestone delivers may de
 2. Visualing different color that show age
 3. Histogram and other data analysis
 
-## Next Steps
+## NEXT STEPS
 1. Prototype basic version of population simulation
 2. Store data locally to .txt file
