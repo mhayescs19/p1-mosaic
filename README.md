@@ -1,4 +1,12 @@
 # p1-mosaic
+## Project Contributors
+| Contributor | GitHub Link | 
+| ----------- | ----------- |
+| Nakul Nandhakumar | [@nakulnandhakumar](https://github.com/nakulnandhakumar) |
+| Sara Beniwal | [@saraben21](https://github.com/saraben21) |
+| Andrew Pegg | [@andrewcomputsci2019](https://github.com/andrewcomputsci2019) |
+| Michael Hayes | [@mhayescs19](https://github.com/mhayescs19) | 
+
 ## SUMMARY
 ### Population Simulation 
 Increase in population is determined by dot interaction (event based), while decrease is based on time. A simple simulation that models the change of population based on factors such as rate of reproduction, death, and interaction. Algorithms will be used to adjust each person’s chances of dying or reproducing based on their age and interaction with one another. If time allows, an algorithm that introduces a virus in the middle of the simulation will be added in order to model the change of population in the middle of a pandemic environment. At the end of the simulation, a data table will be displayed with data such as average increase in population over the years, notable increases or decreases in population with year number, in number of deaths a year, in offspring produced, etc. A database will be added in the future to store simulation data from multiple simulations.
