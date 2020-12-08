@@ -37,9 +37,11 @@ Increase in population is determined by dot interaction (event based), while dec
 Project viewing will be inside of Intellij IDEA. Major milestone delivers may deployed via a JAR file
 
 ## BIG TICKET ITEMS
-1. Variable simulation attributes (chance of death, offspring; intial simulation speed)
-2. Visualing different color that show age
-3. Histogram and other data analysis
+1. Initial panel of variable simulation attributes (chance of death, chance of offspring, initial population, simulation speed)
+2. Control speed of simulation speed on control panel and while viewing simulation (slow down, pause, speed up)
+3. Stopping the simulation would output the data into graphs from that instant (current population, deaths, etc)
+4. Obstacles and areas of movement, people objects in circles in which different colors are used over time to show age
+5. Database with histogram and data analysis of population change and interaction
 
 ## NEXT STEPS
 1. Prototype basic version of population simulation
