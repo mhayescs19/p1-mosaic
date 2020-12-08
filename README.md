@@ -1,11 +1,11 @@
 # p1-mosaic
 ## Project Contributors
-| Contributor | GitHub Link | 
-| ----------- | ----------- |
+| Contributor | GitHub Link | Journal Link |
+| ----------- | ----------- | ----------- | 
 | Nakul Nandhakumar | [@nakulnandhakumar](https://github.com/nakulnandhakumar) |
-| Sara Beniwal | [@saraben21](https://github.com/saraben21) |
+| Sara Beniwal | [@saraben21](https://github.com/saraben21) | [Beniwal, Hayes](https://docs.google.com/document/d/1GPklRpwd5uyFdQljSgF4cZS6Uk6-eDf4EA25CQx3Ngc/edit?usp=sharing)
 | Andrew Pegg | [@andrewcomputsci2019](https://github.com/andrewcomputsci2019) |
-| Michael Hayes | [@mhayescs19](https://github.com/mhayescs19) | 
+| Michael Hayes | [@mhayescs19](https://github.com/mhayescs19) | [Beniwal, Hayes](https://docs.google.com/document/d/1GPklRpwd5uyFdQljSgF4cZS6Uk6-eDf4EA25CQx3Ngc/edit?usp=sharing)
 
 ## SUMMARY
 ### Population Simulation 
