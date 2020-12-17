@@ -8,7 +8,7 @@
 package SimulatorObjects;
 
 import Movement.Movement;
-import Main.Control;
+import Main.SimControl;
 
 public class Person extends Movement {
 
@@ -16,7 +16,7 @@ public class Person extends Movement {
     /**
      * Passed Variables
      */
-    Control control;
+    SimControl simControl;
     /**
      * Attributes
      */
@@ -28,8 +28,8 @@ public class Person extends Movement {
      */
     double chanceDeath;
     double chanceBirth;
-    Person(Control control){
-        this.control = control;
+    Person(SimControl simControl){
+        this.simControl = simControl;
     }
 
     private void init() {
