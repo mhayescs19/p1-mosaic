@@ -7,7 +7,7 @@
 
 package Main;
 
-public class Control {
+public class SimControl {
 
     public int startTime;
     public double simulationSpeed;
@@ -21,8 +21,8 @@ public class Control {
     }
 
     public static void main(String[] args) {
-        Control control = new Control();
+        SimControl simControl = new SimControl();
 
-        control.beginSimulation();
+        simControl.beginSimulation();
     }
 }
