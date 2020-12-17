@@ -12,7 +12,12 @@ public class SimControl {
     public int startTime;
     public double simulationSpeed;
 
+    // Values from ConfigGUI
     public int intialPopulation;
+    // Specific value that are to be shared with other classes
+    public double chanceDeathInitial;
+    public double chanceBirth;
+    public double percentageGender;
 
 
     public void beginSimulation() {

@@ -22,20 +22,35 @@ public class Person extends Movement {
      */
     private int ID;
     private int age;
+    private double myGender;
+    private double myBirthRate;
+    private double myDeathRate;
 
     /**
      * Items from control panel
      */
-    double chanceDeath;
+    double chanceDeathInitial;
     double chanceBirth;
+    double percentageGender;
+
     Person(SimControl simControl){
         this.simControl = simControl;
+        this.chanceBirth = simControl.chanceBirth;
+        this.chanceDeathInitial = simControl.chanceDeathInitial;
+        this.percentageGender = simControl.percentageGender;
+
+        this.init();
     }
 
     private void init() {
 
     }
 
+    /**
+     * Collision detected from control
+     * Methods calculates birth and inherits simple death rate from parents
+     * @param otherPerson
+     */
     public void collisionDetected(Person otherPerson) {
 
     }
