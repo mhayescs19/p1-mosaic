@@ -1,3 +1,9 @@
+/*
+
+    Created 12/14/2020
+    Andrew Pegg
+
+ */
 package Movement;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -7,8 +13,8 @@ import java.util.stream.IntStream;
  */
 public abstract class Movement extends Collesioncheck {
 
-      private int xEnd, yEnd;
-      int vx , vy;
+    public int xEnd, yEnd;
+    public int vx , vy;
 
 
       public Movement()
