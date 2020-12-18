@@ -22,9 +22,9 @@ Increase in population is determined by dot interaction (event based), while dec
 
 ## Weekly Project Contributions and Artifacts Log
 ### Week 3
-| Contributor | Artifacts |
-| ----------- | --------- |
-| Nakul Nandhakumar | TO BE ADDED SOON |
-| Andrew Pegg | TO BE ADDED SOON |
-| Michael Hayes | TO BE ADDED SOON |
-| Sara Beniwal | TO BE ADDED SOON |
+| Contributor | Self Grade /25 | Scrum Grade | Artifacts |
+| ----------- | --------- |  --------- |  --------- |
+| Nakul Nandhakumar |  |  |TO BE ADDED SOON |
+| Andrew Pegg |  |  |TO BE ADDED SOON |
+| Michael Hayes | | | TO BE ADDED SOON |
+| Sara Beniwal | | | TO BE ADDED SOON |
