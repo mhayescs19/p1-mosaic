@@ -18,7 +18,7 @@
 
 
 ## Scrum Board
-<a href="https://github.com/mhayescs19/p1-mosaic/projects/1"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/scrum-board.png" width="35%" height="auto"><a/>
+<a href="https://github.com/mhayescs19/p1-mosaic/projects/1"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/scrum-board-outline.png" width="30%" height="auto"><a/>
 
 ## Population Simulation Project
 ### OVERVIEW ([PROJECT PLAN LINK](https://docs.google.com/document/d/1xFTt2SqCLsW6-2fDmcQppuPO6XvYHVz6I5cnbozqs2U/edit?usp=sharing))
