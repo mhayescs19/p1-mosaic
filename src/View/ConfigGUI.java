@@ -7,8 +7,6 @@
 
 package View;
 import javax.swing.*; // imports swing and awt libraries
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class ConfigGUI extends JFrame {
@@ -18,7 +16,13 @@ public class ConfigGUI extends JFrame {
     int defaultEndValue = 2050;
     int defaultBirthChance = 50;
     int defaultDeathChance = 15;
-    String defaultEndCondition = arrayEndConditions[0];
+    Object defaultEndCondition = arrayEndConditions[0];
+
+    int finalPop;
+    int finalEndValue;
+    int finalBirthChance;
+    int finalDeathChance;
+    Object finalEndCondition;
 
     public ConfigGUI() {
         getContentPane().setBackground(new Color(41, 255, 255));  // Initializing content pane and setting color
@@ -138,13 +142,6 @@ public class ConfigGUI extends JFrame {
         });
         getContentPane().add(sliderInitialChanceOfBirth);
 
-        JButton buttonStartSimulation = new JButton("START");
-        buttonStartSimulation.setForeground(Color.BLACK);
-        buttonStartSimulation.setFont(new Font("Lucia Grande", Font.BOLD, 24));
-        buttonStartSimulation.setBackground(Color.RED);
-        buttonStartSimulation.setBounds(310, 520, 180, 60);
-        getContentPane().add(buttonStartSimulation);
-
         JButton buttonResetToDefaults = new JButton("RESET TO DEFAULTS");
         buttonResetToDefaults.setForeground(Color.BLACK);
         buttonResetToDefaults.setFont(new Font("Lucia Grande", Font.BOLD, 12));
@@ -158,6 +155,20 @@ public class ConfigGUI extends JFrame {
             textfieldEndValue.setText(String.valueOf(defaultEndValue));
         });
         getContentPane().add(buttonResetToDefaults);
+
+        JButton buttonStartSimulation = new JButton("START");
+        buttonStartSimulation.setForeground(Color.BLACK);
+        buttonStartSimulation.setFont(new Font("Lucia Grande", Font.BOLD, 24));
+        buttonStartSimulation.setBackground(Color.RED);
+        buttonStartSimulation.setBounds(310, 520, 180, 60);
+        buttonStartSimulation.addActionListener(event -> {
+            finalPop = sliderInitialPop.getValue();
+            finalDeathChance = sliderInitialChanceOfDeath.getValue();
+            finalBirthChance = sliderInitialChanceOfBirth.getValue();
+            finalEndValue = Integer.parseInt(textfieldEndValue.getText());
+            finalEndCondition = dropdownEndConditions.getSelectedItem();
+        });
+        getContentPane().add(buttonStartSimulation);
     }
 
     public static void main (String[] args){
