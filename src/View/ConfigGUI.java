@@ -7,6 +7,8 @@
 
 package View;
 import javax.swing.*; // imports swing and awt libraries
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class ConfigGUI extends JFrame {
@@ -27,18 +29,28 @@ public class ConfigGUI extends JFrame {
         labelSubTitle.setFont(new Font("Apple Chancery", Font.BOLD+Font.ITALIC, 29));
         getContentPane().add(labelSubTitle);
 
+        JLabel labelInitialPop = new JLabel("Initial Population Size");
+        labelInitialPop.setFont(new Font("Lucia Grande", Font.BOLD, 12));
+        labelInitialPop.setBounds(150, 125, 200, 30);
+        getContentPane().add(labelInitialPop);
+
+        JLabel labelInitialPopView = new JLabel("200 people");
+        labelInitialPopView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
+        labelInitialPopView.setForeground(Color.BLUE);
+        labelInitialPopView.setBounds(690, 110, 80, 40);
+        getContentPane().add(labelInitialPopView);
+
         JSlider sliderInitialPop = new JSlider(100, 1000, 200);
         sliderInitialPop.setBounds(300, 120, 400, 60);
         sliderInitialPop.setMajorTickSpacing(100); // This is like the big ticks on a ruler, puts the, after every 100 on the slider
         sliderInitialPop.setMinorTickSpacing(50);  // This would be just like the sub ticks on a ruler and it puts them after every 50
         sliderInitialPop.setPaintTicks(true); // If true, then the ticks (including minor ticks) are painted on the slider
         sliderInitialPop.setPaintLabels(true); // If true, then paints the number labels beneath each major tick
+        sliderInitialPop.addChangeListener(event -> {
+            labelInitialPopView.setText(sliderInitialPop.getValue() + " people");  // Event listener that carries out code
+                                                                              // when the slider is dragged
+        });
         getContentPane().add(sliderInitialPop); // Adds slider to the content pane
-
-        JLabel labelInitialPop = new JLabel("Initial Population Size");
-        labelInitialPop.setFont(new Font("Lucia Grande", Font.BOLD, 12));
-        labelInitialPop.setBounds(150, 125, 200, 30);
-        getContentPane().add(labelInitialPop);
 
         JComboBox dropdownEndConditions = new JComboBox(arrayEndConditions);  // A ComboBox is basically a dropdown menu and the items it will have is inside the array
         dropdownEndConditions.setBounds(200, 180, 125, 25);
@@ -64,15 +76,6 @@ public class ConfigGUI extends JFrame {
         labelEndValue.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         getContentPane().add(labelEndValue);
 
-        JSlider sliderInitialChanceOfDeath = new JSlider(0, 100, 15);
-        sliderInitialChanceOfDeath.setMajorTickSpacing(10);
-        sliderInitialChanceOfDeath.setMinorTickSpacing(5);
-        sliderInitialChanceOfDeath.setPaintTicks(true);
-        sliderInitialChanceOfDeath.setPaintLabels(true);
-        sliderInitialChanceOfDeath.setSnapToTicks(true); // If true, then slider snaps to nearest tick whether major or minor
-        sliderInitialChanceOfDeath.setBounds(300, 220, 400, 60);
-        getContentPane().add(sliderInitialChanceOfDeath);
-
         JLabel labelInitialChanceOfDeath = new JLabel("Initial Percent Chance of Death");
         labelInitialChanceOfDeath.setBounds(100, 225, 200, 30);
         labelInitialChanceOfDeath.setFont(new Font("Lucia Grande", Font.BOLD, 12));
@@ -83,14 +86,23 @@ public class ConfigGUI extends JFrame {
         labelInitialChanceOfDeathCondition.setFont(new Font("Lucia Grande", Font.BOLD, 10));
         getContentPane().add(labelInitialChanceOfDeathCondition);
 
-        JSlider sliderInitialChanceOfBirth = new JSlider(0, 100, 50);
-        sliderInitialChanceOfBirth.setMajorTickSpacing(10);
-        sliderInitialChanceOfBirth.setMinorTickSpacing(5);
-        sliderInitialChanceOfBirth.setPaintTicks(true);
-        sliderInitialChanceOfBirth.setPaintLabels(true);
-        sliderInitialChanceOfBirth.setSnapToTicks(true); // If true, then slider snaps to nearest tick whether major or minor
-        sliderInitialChanceOfBirth.setBounds(300, 290, 400, 60);
-        getContentPane().add(sliderInitialChanceOfBirth);
+        JLabel labelInitialChanceOfDeathView = new JLabel("15%");
+        labelInitialChanceOfDeathView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
+        labelInitialChanceOfDeathView.setForeground(Color.BLUE);
+        labelInitialChanceOfDeathView.setBounds(690, 210, 70, 40);
+        getContentPane().add(labelInitialChanceOfDeathView);
+
+        JSlider sliderInitialChanceOfDeath = new JSlider(0, 100, 15);
+        sliderInitialChanceOfDeath.setMajorTickSpacing(10);
+        sliderInitialChanceOfDeath.setMinorTickSpacing(5);
+        sliderInitialChanceOfDeath.setPaintTicks(true);
+        sliderInitialChanceOfDeath.setPaintLabels(true);
+        sliderInitialChanceOfDeath.setSnapToTicks(true); // If true, then slider snaps to nearest tick whether major or minor
+        sliderInitialChanceOfDeath.setBounds(300, 220, 400, 60);
+        sliderInitialChanceOfDeath.addChangeListener(event -> {
+            labelInitialChanceOfDeathView.setText(sliderInitialChanceOfDeath.getValue() + "%");
+        });
+        getContentPane().add(sliderInitialChanceOfDeath);
 
         JLabel labelInitialChanceOfBirth = new JLabel("Percent Chance of Birth");
         labelInitialChanceOfBirth.setBounds(150, 295, 150, 30);
@@ -101,6 +113,24 @@ public class ConfigGUI extends JFrame {
         labelInitialChanceOfBirthCondition.setBounds(30, 310, 280, 25);
         labelInitialChanceOfBirthCondition.setFont(new Font("Lucia Grande", Font.BOLD, 10));
         getContentPane().add(labelInitialChanceOfBirthCondition);
+
+        JLabel labelInitialChanceOfBirthView = new JLabel("50%");
+        labelInitialChanceOfBirthView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
+        labelInitialChanceOfBirthView.setForeground(Color.BLUE);
+        labelInitialChanceOfBirthView.setBounds(690, 280, 70, 40);
+        getContentPane().add(labelInitialChanceOfBirthView);
+
+        JSlider sliderInitialChanceOfBirth = new JSlider(0, 100, 50);
+        sliderInitialChanceOfBirth.setMajorTickSpacing(10);
+        sliderInitialChanceOfBirth.setMinorTickSpacing(5);
+        sliderInitialChanceOfBirth.setPaintTicks(true);
+        sliderInitialChanceOfBirth.setPaintLabels(true);
+        sliderInitialChanceOfBirth.setSnapToTicks(true); // If true, then slider snaps to nearest tick whether major or minor
+        sliderInitialChanceOfBirth.setBounds(300, 290, 400, 60);
+        sliderInitialChanceOfBirth.addChangeListener(event -> {
+            labelInitialChanceOfBirthView.setText(sliderInitialChanceOfBirth.getValue() + "%");
+        });
+        getContentPane().add(sliderInitialChanceOfBirth);
 
         JButton buttonStartSimulation = new JButton("START");
         buttonStartSimulation.setForeground(Color.BLACK);
@@ -117,4 +147,7 @@ public class ConfigGUI extends JFrame {
     // Above code block is to show visual for testing and error correction purposes
     // Please remove whenever necessary
     // It most likely won't be included in the final project
+
+
+
 }
