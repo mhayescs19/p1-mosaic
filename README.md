@@ -7,6 +7,16 @@
 | Andrew Pegg | [@andrewcomputsci2019](https://github.com/andrewcomputsci2019) | [Pegg, Nandhakumar](https://docs.google.com/document/d/13jZuundZrvb5XTzzLQkuICyFDAwaFdN6_um2oTZFZNU/edit?usp=sharing)
 | Michael Hayes | [@mhayescs19](https://github.com/mhayescs19) | [Beniwal, Hayes](https://docs.google.com/document/d/1GPklRpwd5uyFdQljSgF4cZS6Uk6-eDf4EA25CQx3Ngc/edit?usp=sharing)
 
+## Weekly Project Contributions and Artifacts Log
+### Week 3
+| Contributor | Self Grade /25 | Scrum Grade | Artifacts |
+| ----------- | --------- |  --------- |  --------- |
+| Nakul Nandhakumar |  |  |TO BE ADDED SOON |
+| Andrew Pegg |  |  |TO BE ADDED SOON |
+| Michael Hayes | | | TO BE ADDED SOON |
+| Sara Beniwal | | | TO BE ADDED SOON |
+
+
 ## Scrum Board
 <a href="https://github.com/mhayescs19/p1-mosaic/projects/1"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/scrum-board.png" width="35%" height="auto"><a/>
 
@@ -19,12 +29,3 @@ Increase in population is determined by dot interaction (event based), while dec
 
 ## Code Model
 <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/design_code-model.png" width=75% height=auto>
-
-## Weekly Project Contributions and Artifacts Log
-### Week 3
-| Contributor | Self Grade /25 | Scrum Grade | Artifacts |
-| ----------- | --------- |  --------- |  --------- |
-| Nakul Nandhakumar |  |  |TO BE ADDED SOON |
-| Andrew Pegg |  |  |TO BE ADDED SOON |
-| Michael Hayes | | | TO BE ADDED SOON |
-| Sara Beniwal | | | TO BE ADDED SOON |
