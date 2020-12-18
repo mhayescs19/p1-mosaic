@@ -12,7 +12,13 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class ConfigGUI extends JFrame {
- String arrayEndConditions[] = {"Population", "Year"};  // Array with options to chose type of condition for ending sim
+    String arrayEndConditions[] = {"Population", "Year"};  // Array with options to chose type of condition for ending sim
+
+    int defaultPop = 200;
+    int defaultEndValue = 2050;
+    int defaultBirthChance = 50;
+    int defaultDeathChance = 15;
+    String defaultEndCondition = arrayEndConditions[0];
 
     public ConfigGUI() {
         getContentPane().setBackground(new Color(41, 255, 255));  // Initializing content pane and setting color
@@ -34,7 +40,7 @@ public class ConfigGUI extends JFrame {
         labelInitialPop.setBounds(150, 125, 200, 30);
         getContentPane().add(labelInitialPop);
 
-        JLabel labelInitialPopView = new JLabel("200 people");
+        JLabel labelInitialPopView = new JLabel(defaultPop+" people");
         labelInitialPopView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         labelInitialPopView.setForeground(Color.BLUE);
         labelInitialPopView.setBounds(690, 110, 80, 40);
@@ -61,7 +67,7 @@ public class ConfigGUI extends JFrame {
         labelEndConditions.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         getContentPane().add(labelEndConditions);
 
-        JTextField textfieldEndValue = new JTextField("2050");
+        JTextField textfieldEndValue = new JTextField(String.valueOf(defaultEndValue));
         textfieldEndValue.setBounds(550, 180, 75, 25);
         textfieldEndValue.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         getContentPane().add(textfieldEndValue);
@@ -86,7 +92,7 @@ public class ConfigGUI extends JFrame {
         labelInitialChanceOfDeathCondition.setFont(new Font("Lucia Grande", Font.BOLD, 10));
         getContentPane().add(labelInitialChanceOfDeathCondition);
 
-        JLabel labelInitialChanceOfDeathView = new JLabel("15%");
+        JLabel labelInitialChanceOfDeathView = new JLabel(defaultDeathChance+"%");
         labelInitialChanceOfDeathView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         labelInitialChanceOfDeathView.setForeground(Color.BLUE);
         labelInitialChanceOfDeathView.setBounds(690, 210, 70, 40);
@@ -114,7 +120,7 @@ public class ConfigGUI extends JFrame {
         labelInitialChanceOfBirthCondition.setFont(new Font("Lucia Grande", Font.BOLD, 10));
         getContentPane().add(labelInitialChanceOfBirthCondition);
 
-        JLabel labelInitialChanceOfBirthView = new JLabel("50%");
+        JLabel labelInitialChanceOfBirthView = new JLabel(defaultBirthChance+"%");
         labelInitialChanceOfBirthView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         labelInitialChanceOfBirthView.setForeground(Color.BLUE);
         labelInitialChanceOfBirthView.setBounds(690, 280, 70, 40);
@@ -136,8 +142,22 @@ public class ConfigGUI extends JFrame {
         buttonStartSimulation.setForeground(Color.BLACK);
         buttonStartSimulation.setFont(new Font("Lucia Grande", Font.BOLD, 24));
         buttonStartSimulation.setBackground(Color.RED);
-        buttonStartSimulation.setBounds(310, 500, 180, 60);
+        buttonStartSimulation.setBounds(310, 520, 180, 60);
         getContentPane().add(buttonStartSimulation);
+
+        JButton buttonResetToDefaults = new JButton("RESET TO DEFAULTS");
+        buttonResetToDefaults.setForeground(Color.BLACK);
+        buttonResetToDefaults.setFont(new Font("Lucia Grande", Font.BOLD, 12));
+        buttonResetToDefaults.setBackground(Color.RED);
+        buttonResetToDefaults.setBounds(10, 550, 170, 30);
+        buttonResetToDefaults.addActionListener(event -> {
+            sliderInitialPop.setValue(defaultPop);
+            sliderInitialChanceOfDeath.setValue(defaultDeathChance);
+            sliderInitialChanceOfBirth.setValue(defaultBirthChance);
+            dropdownEndConditions.setSelectedItem(defaultEndCondition);
+            textfieldEndValue.setText(String.valueOf(defaultEndValue));
+        });
+        getContentPane().add(buttonResetToDefaults);
     }
 
     public static void main (String[] args){
