@@ -14,14 +14,14 @@ public class ConfigGUI extends JFrame {
 
     int defaultPop = 200;
     int defaultEndValue = 2050;
-    int defaultBirthChance = 50;
-    int defaultDeathChance = 15;
+    double defaultBirthChance = 0.5*100;
+    double defaultDeathChance = 0.15*100;
     Object defaultEndCondition = arrayEndConditions[0];
 
     int finalPop;
     int finalEndValue;
-    int finalBirthChance;
-    int finalDeathChance;
+    double finalBirthChance;
+    double finalDeathChance;
     Object finalEndCondition;
 
     public ConfigGUI() {
@@ -149,8 +149,8 @@ public class ConfigGUI extends JFrame {
         buttonResetToDefaults.setBounds(10, 550, 170, 30);
         buttonResetToDefaults.addActionListener(event -> {
             sliderInitialPop.setValue(defaultPop);
-            sliderInitialChanceOfDeath.setValue(defaultDeathChance);
-            sliderInitialChanceOfBirth.setValue(defaultBirthChance);
+            sliderInitialChanceOfDeath.setValue((int) defaultDeathChance);
+            sliderInitialChanceOfBirth.setValue((int) defaultBirthChance);
             dropdownEndConditions.setSelectedItem(defaultEndCondition);
             textfieldEndValue.setText(String.valueOf(defaultEndValue));
         });
@@ -163,8 +163,8 @@ public class ConfigGUI extends JFrame {
         buttonStartSimulation.setBounds(310, 520, 180, 60);
         buttonStartSimulation.addActionListener(event -> {
             finalPop = sliderInitialPop.getValue();
-            finalDeathChance = sliderInitialChanceOfDeath.getValue();
-            finalBirthChance = sliderInitialChanceOfBirth.getValue();
+            finalDeathChance = sliderInitialChanceOfDeath.getValue()/100.0;
+            finalBirthChance = sliderInitialChanceOfBirth.getValue()/100.0;
             finalEndValue = Integer.parseInt(textfieldEndValue.getText());
             finalEndCondition = dropdownEndConditions.getSelectedItem();
         });
