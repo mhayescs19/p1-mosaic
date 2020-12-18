@@ -9,9 +9,9 @@
 
 ## 12/18 Weekly Project Contributions and Artifacts Log
 ### Week 3
-| Contributor | Self Grade /25 | Scrum Grade | Artifacts |
+| Contributor | Self Grade /20 | Scrum Grade /5 | Artifacts |
 | ----------- | --------- |  --------- |  --------- |
-| Nakul Nandhakumar |  |  |TO BE ADDED SOON |
+| Nakul Nandhakumar | 19/20 |  |TO BE ADDED SOON |
 | Andrew Pegg |  |  |TO BE ADDED SOON |
 | Michael Hayes | | | TO BE ADDED SOON |
 | Sara Beniwal | | | TO BE ADDED SOON |
