@@ -51,8 +51,8 @@ public abstract class Movement extends Collesioncheck {
         private void Genvelo()
         {
             Random random = new Random(System.currentTimeMillis());
-            IntStream intStream = random.ints(2,0,10);
-            int[] array = intStream.toArray();
+            IntStream intStream = random.ints(2,0,10); // get two random ints range 0 to 10 or 9 idr
+            int[] array = intStream.toArray(); // cast to array
             vx = array[0];
             vy = array[1];
         }
