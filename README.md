@@ -11,7 +11,7 @@
 ### Week 3
 | Contributor | Self Grade /20 | Scrum Grade /5 | Artifacts |
 | ----------- | --------- |  --------- |  --------- |
-| Nakul Nandhakumar | 19/20 |  |TO BE ADDED SOON |
+| Nakul Nandhakumar | 19/20 | 5/5 | - Added configuration GUI <br> - Created sliders for Death Chance, Birth Chance, Initial Pop <br> - Created drop down menu (JComboBox) for end condition <br> - Added ChangeListener for sliders to update real-time change in values <br> - Added "Reset to Default" button that resets all values on GUI to default values|
 | Andrew Pegg |  |  |TO BE ADDED SOON |
 | Michael Hayes | | | TO BE ADDED SOON |
 | Sara Beniwal | | | TO BE ADDED SOON |
