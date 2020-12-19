@@ -24,7 +24,7 @@ public class Person extends Movement {
     private int age;
     private Gender myGender;
     private double myBirthRate;
-    private int myDeathRate;
+    private double myDeathRate;
 
     /**
      * Items from control panel
@@ -33,8 +33,11 @@ public class Person extends Movement {
     double chanceBirth;
     double percentageGender;
 
-    // default constructor
-    Person(SimControl simControl){
+    /**
+     * Default constructor
+     * @param simControl
+     */
+    public Person(SimControl simControl){
         this.simControl = simControl;
         this.chanceBirth = simControl.chanceBirth;
         this.chanceDeathInitial = simControl.chanceDeathInitial;
@@ -42,11 +45,15 @@ public class Person extends Movement {
 
         this.init();
     }
-    // constructor for a new birth during sim
-    Person(double chanceDeath) {
+
+    /**
+     * Constructor for a new birth during simulation with inherited genetics
+     */
+    // Note: Will update genetics for clarity in the future... separate Genetics class?
+    public Person(SimControl simControl, double[] genetics) {
         this.simControl = simControl;
-        this.chanceBirth = simControl.chanceBirth;
-        this.chanceDeathInitial = chanceDeath;
+        this.chanceBirth = genetics[1];
+        this.chanceDeathInitial = genetics[2];
         this.percentageGender = simControl.percentageGender;
 
         this.age = 0;
@@ -67,29 +74,38 @@ public class Person extends Movement {
         // sets Person birth rate
         this.myBirthRate = chanceBirth;
         // sets Person death probability at age 60
-        if (Math.random() < chanceDeathInitial) {
-            this.myDeathRate = 1;
-        } else {
-            this.myDeathRate = 0;
-        }
+        this.myDeathRate = chanceDeathInitial;
     }
 
     /**
      * Collision detected from control
-     * Methods calculates birth and inherits simple death rate from parents
+     * Methods calculates birth and passes inherited genetics (birthRate, deathRate) from parents
      * @param otherPerson
      */
     public double[] collisionDetected(Person otherPerson) {
 
+        // default values for variables used in scope of if, but need to be saved
+        double inheritedDeathRate = -1.0;
+        double childBirthRate = -1.0;
+        int birth = 0;
+
         if (this.verifyAge() && otherPerson.verifyAge()) { // verifies both individuals are of age
             double finalChanceBirth = (this.myBirthRate + otherPerson.myBirthRate) / 2; // averages birth rate of parents for "realism"
-            double chance = Math.random(); // randomization extracted in order to access chance
+            double birthChance = Math.random(); // first attempt of randomization
 
-            if (chance < finalChanceBirth) { // chance executed based on combined parent's birth rates
-                double childBirthRate = chance;
+            while (birthChance == 0.0) { // verifies birth rate is a percent chance and not zero
+                birthChance = Math.random(); // randomization extracted in order to access chance
             }
+
+            if (birthChance < finalChanceBirth) { // chance executed based on combined parent's birth rates
+                birth = 1;
+            }
+            childBirthRate = birthChance;
+
+            inheritedDeathRate = (this.myBirthRate + otherPerson.myBirthRate) / 2;
         }
-        double[] genetics = new double[]{0.0, 0.5};
+        double[] genetics = new double[]{birth, childBirthRate, inheritedDeathRate}; // returns inherited genetics, which is used in secondary constructor in Person
+
         return genetics;
     }
 
@@ -97,6 +113,10 @@ public class Person extends Movement {
 
     }
 
+    /**
+     * Verifies birth possibility based on age range
+     * @return
+     */
     public boolean verifyAge(){
         boolean ofAge; // boolean for clarity of check
 
@@ -110,5 +130,8 @@ public class Person extends Movement {
 
     // Getters for class variables
     public int getAge(){ return this.age; }
+
+    // Setters for class variables
+    public void setID(int id){ this.ID = id;}
 
 }

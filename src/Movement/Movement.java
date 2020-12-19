@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 /*
         abstract classes can not be instantiated are used by many classes as almost like a parent
  */
-public abstract class Movement extends Collesioncheck {
+public abstract class Movement extends CollisionCheck {
 
     public int xEnd, yEnd;
     public int vx , vy;
