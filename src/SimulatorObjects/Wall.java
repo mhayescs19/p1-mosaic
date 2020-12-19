@@ -1,14 +1,10 @@
 package SimulatorObjects;
 
-import Movement.Collesioncheck;
+import Movement.CollisionCheck;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-public class Wall extends Collesioncheck {
+public class Wall extends CollisionCheck {
     ImageIcon image;
     public  boolean visible;
     public boolean  vertical;
