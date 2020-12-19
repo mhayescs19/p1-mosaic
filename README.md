@@ -12,7 +12,7 @@
 | Contributor | Self Grade /20 | Scrum Grade /5 | Artifacts |
 | ----------- | --------- |  --------- |  --------- |
 | Nakul Nandhakumar | 19/20 | 5/5 | **ARTIFACTS:** <br> - Added [Configuration GUI](https://github.com/mhayescs19/p1-mosaic/blob/master/src/View/ConfigGUI.java#L12) <br> - Created sliders for [Death Chance](https://github.com/mhayescs19/p1-mosaic/blob/master/src/View/ConfigGUI.java#L105), [Birth Chance](https://github.com/mhayescs19/p1-mosaic/blob/master/src/View/ConfigGUI.java#L133), [Initial Pop](https://github.com/mhayescs19/p1-mosaic/blob/master/src/View/ConfigGUI.java#L53) <br> - Created [dropdown menu (JComboBox)](https://github.com/mhayescs19/p1-mosaic/blob/master/src/View/ConfigGUI.java#L65) for end conditions <br> - Added [ChangeListener](https://github.com/mhayescs19/p1-mosaic/blob/master/src/View/ConfigGUI.java#L59) for sliders to update real-time change <br> - Added ["Reset to Default" button](https://github.com/mhayescs19/p1-mosaic/blob/master/src/View/ConfigGUI.java#L145) that resets all values on GUI to default values <br> - Met outside of class and linked [pull-requests to issues](https://github.com/mhayescs19/p1-mosaic/projects/1#card-51221842) on Scrum Board <br> **Approx 6.5 hrs coding** <br> <br> **TO-DO:** <br> - See [ScrumBoard TO-DO](https://github.com/mhayescs19/p1-mosaic/projects/1#column-11956723) for to-do's|
-| Andrew Pegg | 18/20 | 5/5 |TO BE ADDED SOON | 
+| Andrew Pegg | 18/20 | 5/5 |**ARTIFACTS**<br> - Added [Movement] https://github.com/mhayescs19/p1-mosaic/blob/master/src/Movement/Movement.java#L14 | 
 | Michael Hayes | | 5/5 | TO BE ADDED SOON |
 | Sara Beniwal | | 5/5 | TO BE ADDED SOON |
 
