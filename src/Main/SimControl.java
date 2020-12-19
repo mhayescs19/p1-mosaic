@@ -43,7 +43,8 @@ public class SimControl {
     /**
      * Method that is called after each time the timer is fired
      * 1. Loops through entire population and checks for any collisions
-     *      a. If a collision is detected, a chance of birth is
+     *      a. If a collision is detected, a birth is possible
+     *      b. If a child is "born", a new Person object is added to the master "population" ArrayList
      */
     public void updatePopulation(){
 
