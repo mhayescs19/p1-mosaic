@@ -2,6 +2,7 @@ package Panel;
 
 import Main.SimControl;
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,7 +13,7 @@ public class Painter extends Panel{
     SimControl simControl;
     Timer timer; //like objective c timer loops and does stuff every set interval
     double Time = 0; // will be used to track how long the program has been running
-    public Painter(SimControl sim)
+    public Painter(SimControl sim, JPanel panel) // need panel
     {
         this.simControl = sim; // ass the simControl in a parameter
         jFrame = new JFrame(name_of_panel);
@@ -39,13 +40,23 @@ public class Painter extends Panel{
     public void paint(Graphics g) {
             // add paint stuff
             Time += 16; // constant will change this
-
-
+        g.setColor(new Color(0, 100, 0)); // code from sara ui, If she made panel public could call here paint code in here it should work
+        g.fillOval(300, 200, 400, 200);
+        g.fillOval(250, 170, 400, 200);
+        g.fillOval(150, 170, 400, 200);
+        g.fillOval(350, 100, 400, 200);
+        g.fillOval(325, 35, 400, 200);
+        g.fillOval(150, 50, 400, 200);
+        g.fillOval(100, 30, 400, 200);
+        g.fillOval(50, 40, 400, 200);
+        g.fillOval(30, 100, 400, 200);
+        g.fillOval(30, 120, 400, 200);
+        g.fillOval(200, 215, 400, 200);
 
         //end condition
         if (quit)
         {
-            timer.stop();
+            timer.stop(); //stops invoking panel class
         }
     }
 }
