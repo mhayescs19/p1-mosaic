@@ -7,9 +7,11 @@
 
 package Main;
 
+import java.awt.*;
 import java.util.ArrayList;
 import SimulatorObjects.Person;
 import Movement.CollisionCheck;
+import SimulatorObjects.Wall;
 
 public class SimControl {
 
@@ -17,7 +19,7 @@ public class SimControl {
     public double simulationSpeed;
 
     ArrayList<Person> population;
-
+    ArrayList<Wall> walls; // need a constructor for this my idea is to have this initialize in the constructor
     // Values from ConfigGUI
     public int initialPopulation;
     // Specific value that are to be shared with other classes
@@ -66,6 +68,34 @@ public class SimControl {
 
 
     }
+
+    /**
+     *  class desgin to be called on every invok by the timer in Painter
+     *
+     * @param g graphics need to paint onto the panel
+     */
+    public void PaintPopulation(Graphics g) // graphics is the panel
+    {
+        for (Person person : population)
+        {
+            g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+            for (Person person2 : population)
+            {
+                if (person.collision(person2))  // code that will check for collision
+                {
+                    person.collisionDetected(person2); // executes code from Micheal's class
+                    System.out.println("collision detected"); // debug stuff
+                }
+            }
+            /*
+            for(Wall wall:walls )
+            {
+                   // check for collision with walls in here
+            }
+             */
+        }
+    }
+
 
     public static void main(String[] args) {
         SimControl simControl = new SimControl();
