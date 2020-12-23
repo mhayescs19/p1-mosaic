@@ -34,6 +34,14 @@ public class Wall extends CollisionCheck {
     {
         return image;
     }
+    public int getX()
+    {
+        return this.x;
+    }
+    public int getY()
+    {
+        return this.y;
+    }
 
     public boolean isVisible() { // getter
         return visible;

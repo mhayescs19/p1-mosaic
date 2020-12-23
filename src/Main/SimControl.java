@@ -19,7 +19,6 @@ public class SimControl {
     public double simulationSpeed;
 
     ArrayList<Person> population;
-    ArrayList<Wall> walls; // need a constructor for this my idea is to have this initialize in the constructor
     // Values from ConfigGUI
     public int initialPopulation;
     // Specific value that are to be shared with other classes
@@ -95,6 +94,7 @@ public class SimControl {
              */
         }
     }
+
 
 
     public static void main(String[] args) {
