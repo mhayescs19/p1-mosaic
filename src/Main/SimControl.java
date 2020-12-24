@@ -10,14 +10,15 @@ package Main;
 import java.awt.*;
 import java.util.ArrayList;
 import SimulatorObjects.Person;
-import Movement.CollisionCheck;
 import SimulatorObjects.Wall;
+import Panel.Painter;
+
 
 public class SimControl {
 
     public int startTime;
     public double simulationSpeed;
-
+    private Painter painter;
     ArrayList<Person> population;
     // Values from ConfigGUI
     public int initialPopulation;
@@ -31,8 +32,9 @@ public class SimControl {
      * xImplementation of view later
      */
     public void beginSimulation() {
+        painter = new Painter(this); // this refers to this class
         population = new ArrayList<Person>(); // master list of population
-
+        painter.Start(); // starts the painter
         for (int i = 0; i < initialPopulation; i++) { // initial creation of population
             Person newPerson = new Person(this);
             newPerson.setID(i);
@@ -86,12 +88,26 @@ public class SimControl {
                     System.out.println("collision detected"); // debug stuff
                 }
             }
-            /*
-            for(Wall wall:walls )
+
+            for(Wall wall: painter.getWalls())
             {
                    // check for collision with walls in here
+               if ( person.collision(wall))
+               {
+                        if (wall.vertical)
+                        {
+                            person.CollisionVertical();
+                        }
+                        else
+                        {
+                            person.CollisionHorizontal();
+                        }
+               }
+               person.Velcoity();//updates velocity
+
+
             }
-             */
+
         }
     }
 

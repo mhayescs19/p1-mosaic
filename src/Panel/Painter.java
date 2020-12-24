@@ -65,5 +65,10 @@ public class Painter extends Panel{
             timer.stop(); //stops invoking panel class
         }
     }
+    public ArrayList<Wall> getWalls()
+    {
+        return this.walls;
+    }
+
 }
 //todo add a constructor for walls so they can be painted onto the panel

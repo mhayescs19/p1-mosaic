@@ -62,6 +62,16 @@ public abstract class Movement extends CollisionCheck {
             x = random.nextInt(xEnd);
             y = random.nextInt(yEnd);
         }
+        public void CollisionHorizontal()
+        {
+            vx*=-1;
+        }
+        public void CollisionVertical()
+        {
+            vy*=-1;
+        }
+
+
 
 
 
