@@ -72,7 +72,7 @@ public class SimControl {
 
     /**
      *  class desgin to be called on every invok by the timer in Painter
-     *
+     * @see Painter
      * @param g graphics need to paint onto the panel
      */
     public void PaintPopulation(Graphics g) // graphics is the panel
@@ -89,7 +89,7 @@ public class SimControl {
                 }
             }
 
-            for(Wall wall: painter.getWalls())
+            for(Wall wall: painter.getWalls()) // for each
             {
                    // check for collision with walls in here
                if ( person.collision(wall))
