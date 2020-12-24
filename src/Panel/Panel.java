@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020.
+ * Created by Andrew Pegg
+ */
+
 package Panel;
 
 import javax.swing.*;
