@@ -8,21 +8,27 @@ package Movement;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-/*
-        abstract classes can not be instantiated are used by many classes as almost like a parent
+/**
+ * An abstract class that tracks the position of objects that extend it
+ * @see CollisionCheck
+ * @see SimulatorObjects.Person
+ *
  */
+//abstract classes can not be instantiated are used by many classes as almost like a parent
 public abstract class Movement extends CollisionCheck {
 
     public int xEnd, yEnd;
     public int vx , vy;
 
-
+    /**
+     * default constructor for Movement
+     */
       public Movement()
       {
 
           // xEnd , yEnd set to boarders of the screen
           // set vx and vy to speeds
-          // x and y velocity will random depenging on objcet
+          // x and y velocity will random depending on object
           this.width =0;
          this.height =0;
           Genvelo();
@@ -48,7 +54,11 @@ public abstract class Movement extends CollisionCheck {
             vx =0;
             vy=0;
         }
-        private void Genvelo()
+
+    /**
+     * generates the velocity for the object
+     */
+    private void Genvelo()
         {
             Random random = new Random(System.currentTimeMillis());
             IntStream intStream = random.ints(2,0,10); // get two random ints range 0 to 10 or 9 idr
@@ -56,7 +66,13 @@ public abstract class Movement extends CollisionCheck {
             vx = array[0];
             vy = array[1];
         }
-        private void GenXY()
+
+    /**
+     * Generates x and y cords for the location of the object on the panel
+     * @see #Movement()
+     *
+     */
+    private void GenXY()
         {
             Random random = new Random(System.currentTimeMillis());
             x = random.nextInt(xEnd);

@@ -77,17 +77,10 @@ public class SimControl {
      */
     public void PaintPopulation(Graphics g) // graphics is the panel
     {
+        updatePopulation(); // calls Micheal's code for collision check with other people and updates the arraylist
         for (Person person : population)
         {
-            g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
-            for (Person person2 : population)
-            {
-                if (person.collision(person2))  // code that will check for collision
-                {
-                    person.collisionDetected(person2); // executes code from Micheal's class
-                    System.out.println("collision detected"); // debug stuff
-                }
-            }
+
 
             for(Wall wall: painter.getWalls()) // for each
             {
@@ -103,11 +96,9 @@ public class SimControl {
                             person.CollisionHorizontal();
                         }
                }
-               person.Velcoity();//updates velocity
-
-
             }
-
+            person.Velcoity();//updates velocity
+            g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
         }
     }
 
