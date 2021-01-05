@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020.
+ * Created by Andrew Pegg
+ */
+
 package SimulatorObjects;
 
 import Movement.CollisionCheck;
@@ -33,6 +38,14 @@ public class Wall extends CollisionCheck {
     public ImageIcon getImageIcon() // getter from imageicon
     {
         return image;
+    }
+    public int getX()
+    {
+        return this.x;
+    }
+    public int getY()
+    {
+        return this.y;
     }
 
     public boolean isVisible() { // getter

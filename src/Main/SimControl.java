@@ -7,17 +7,19 @@
 
 package Main;
 
+import java.awt.*;
 import java.util.ArrayList;
 import SimulatorObjects.Person;
-import Movement.CollisionCheck;
+import SimulatorObjects.Wall;
+import Panel.Painter;
+
 
 public class SimControl {
 
     public int startTime;
     public double simulationSpeed;
-
+    private Painter painter;
     ArrayList<Person> population;
-
     // Values from ConfigGUI
     public int initialPopulation;
     // Specific value that are to be shared with other classes
@@ -30,8 +32,9 @@ public class SimControl {
      * xImplementation of view later
      */
     public void beginSimulation() {
+        painter = new Painter(this); // this refers to this class
         population = new ArrayList<Person>(); // master list of population
-
+        painter.Start(); // starts the painter
         for (int i = 0; i < initialPopulation; i++) { // initial creation of population
             Person newPerson = new Person(this);
             newPerson.setID(i);
@@ -66,6 +69,40 @@ public class SimControl {
 
 
     }
+
+    /**
+     *  class desgin to be called on every invok by the timer in Painter
+     * @see Painter
+     * @param g graphics need to paint onto the panel
+     */
+    public void PaintPopulation(Graphics g) // graphics is the panel
+    {
+        updatePopulation(); // calls Micheal's code for collision check with other people and updates the arraylist
+        for (Person person : population)
+        {
+
+
+            for(Wall wall: painter.getWalls()) // for each
+            {
+                   // check for collision with walls in here
+               if ( person.collision(wall))
+               {
+                        if (wall.vertical)
+                        {
+                            person.CollisionVertical();
+                        }
+                        else
+                        {
+                            person.CollisionHorizontal();
+                        }
+               }
+            }
+            person.Velcoity();//updates velocity
+            g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+        }
+    }
+
+
 
     public static void main(String[] args) {
         SimControl simControl = new SimControl();

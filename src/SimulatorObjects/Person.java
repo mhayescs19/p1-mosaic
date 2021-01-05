@@ -133,5 +133,25 @@ public class Person extends Movement {
 
     // Setters for class variables
     public void setID(int id){ this.ID = id;}
+    //getter for x
+    public int getX()
+    {
+        return x;
+    }
+    // getter for y
+    public int getY()
+    {
+        return y;
+    }
+    public int getWidth()
+    {
+        return width;
+    }
+    public int getHeight()
+    {
+        return height;
+    }
+
+
 
 }
