@@ -109,7 +109,7 @@ public class SimControl {
                 person.Velcoity();//updates velocity
             }
 
-            switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB?
+            switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
                 case youth -> g.setColor(Color.decode("#FFF700")); // yellow
                 case baby -> g.setColor(Color.decode("#FFD100")); // yellow-orange
                 case teen -> g.setColor(Color.decode("#FFB400")); // orange
@@ -117,6 +117,10 @@ public class SimControl {
                 case middleAge -> g.setColor(Color.decode("#BF0202")); // red
                 case senior -> g.setColor(Color.decode("#CB008F")); // purple
                 case seniorPlus -> g.setColor(Color.decode("#69006D")); // dark purple
+                default -> {
+                    g.setColor(Color.BLACK);
+                    System.out.println("Age category not found");
+                }
             }
 
             g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
