@@ -13,6 +13,8 @@ import Main.SimControl;
 public class Person extends Movement {
 
     public enum Gender {male, female}
+
+    public enum Health {alive, dead}
     /**
      * Passed Variables
      */
@@ -23,8 +25,14 @@ public class Person extends Movement {
     private int ID;
     private int age;
     private Gender myGender;
+    private Health myHealth;
     private double myBirthRate;
     private double myDeathRate;
+
+    /**
+     * Other Values
+     */
+    private int timeScale;
 
     /**
      * Items from control panel
@@ -32,6 +40,7 @@ public class Person extends Movement {
     double chanceDeathInitial;
     double chanceBirth;
     double percentageGender;
+    double simSpeed;
 
     /**
      * Default constructor
@@ -55,6 +64,7 @@ public class Person extends Movement {
         this.chanceBirth = genetics[1];
         this.chanceDeathInitial = genetics[2];
         this.percentageGender = simControl.percentageGender;
+        this.simSpeed = simControl.simSpeed;
 
         this.age = 0;
 
@@ -110,6 +120,19 @@ public class Person extends Movement {
     }
 
     public void ageManager() {
+        this.timeScale += 1; // counts time in year by collecting a value each time the frame is repainted
+
+        if (timeScale == 5 * simSpeed) { // every five ticks, one year passes (default time if simSpeed = 1.0)
+            this.age += 1;
+
+            if (this.age == 60) { // once person reaches age 60, the death rate starts to take effect
+                if (Math.random() < this.myDeathRate) { // "first trial" - can the person survive the initial application of death rate
+                    this.myHealth = Health.dead;
+                }
+            } else if (this.age > 60) { // once a person is over the age of 60, their death rate will increase along an  exponential eqs
+                this.myDeathRate = Math.pow(2.0, this.age - 57.7);
+            }
+        }
 
     }
 
@@ -130,6 +153,13 @@ public class Person extends Movement {
 
     // Getters for class variables
     public int getAge(){ return this.age; }
+
+    public int getTimeScale() { return this.timeScale; }
+
+    public boolean isDead() {
+        return this.myHealth == Health.dead;
+    }
+
 
     // Setters for class variables
     public void setID(int id){ this.ID = id;}

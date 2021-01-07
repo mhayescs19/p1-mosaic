@@ -26,6 +26,7 @@ public class SimControl {
     public double chanceDeathInitial;
     public double chanceBirth;
     public double percentageGender;
+    public double simSpeed;
 
     /**
      * Creates population of Person objects in an ArrayList w/custom ID
@@ -65,6 +66,7 @@ public class SimControl {
                     }
                 }
             }
+            firstPerson.ageManager();
         }
 
 
@@ -97,7 +99,13 @@ public class SimControl {
                         }
                }
             }
-            person.Velcoity();//updates velocity
+
+            if (person.isDead()) { // death condition
+                person.Velcoity0();
+            } else {
+                person.Velcoity();//updates velocity
+
+            }
             g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
         }
     }
