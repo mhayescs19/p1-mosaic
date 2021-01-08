@@ -19,5 +19,5 @@ public class ViewForPaint {
         g.fillOval(30, 120, 400, 200);
         g.fillOval(200, 215, 400, 200);
     }
-
+        //comment
 }

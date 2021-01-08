@@ -25,6 +25,6 @@ public abstract class Panel extends JPanel implements ActionListener {
 
     @Override //used in other class
     public abstract void paint(Graphics g);
-
+    //comment
 
 }

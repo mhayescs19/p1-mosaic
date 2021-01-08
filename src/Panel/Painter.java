@@ -63,7 +63,7 @@ public class Painter extends Panel{
       //  List<Wall> collection =  IntStream.range(0,4).mapToObj(operand -> new Wall(operand*5,operand*5,wallcontrtorInterface.checkEven(operand),imagefilepath)).collect(Collectors.toList());
        walls = (ArrayList<Wall>) IntStream.range(0,4).mapToObj(operand -> new Wall(operand*5,operand*5,wallcontrtorInterface.checkEven(operand),imagefilepath)).collect(Collectors.toList());
        // List data type inherits all types of list in java so arraylist and linked list, so we can use a explict conversion to convert the stream into an arraylist, https://docs.oracle.com/javase/8/docs/api/?java/util/List.html
-        
+       //comment
     }
 
 
