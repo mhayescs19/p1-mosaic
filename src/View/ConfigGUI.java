@@ -198,7 +198,6 @@ public class ConfigGUI extends JFrame {
             initialBirthChance = sliderInitialChanceOfBirth.getValue()/100.0;
             EndValue = Integer.parseInt(textfieldEndValue.getText());
             EndCondition = EndConditions.valueOf(String.valueOf(dropdownEndConditions.getSelectedItem()));
-            System.out.println(EndCondition);
             initialYear = 2020;
             initialPercentageMales = sliderInitialPercentageOfMales.getValue()/100.0;
             initialPercentageFemales = 1.0 - initialPercentageMales;
