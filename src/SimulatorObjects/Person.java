@@ -13,6 +13,11 @@ import Main.SimControl;
 public class Person extends Movement {
 
     public enum Gender {male, female}
+
+    public enum Health {alive, dead}
+
+    public enum Age {baby, youth, teen, youngAdult, middleAge, senior, seniorPlus} // baby 0-5, youth 5-12, teen 13-18, youngAdult 18-35, middleAge 35-60, senior 60-75, seniorPlus 75-100+
+
     /**
      * Passed Variables
      */
@@ -22,9 +27,16 @@ public class Person extends Movement {
      */
     private int ID;
     private int age;
+    private Age myAgeCategory;
     private Gender myGender;
+    private Health myHealth;
     private double myBirthRate;
     private double myDeathRate;
+
+    /**
+     * Other Values
+     */
+    private int timeScale;
 
     /**
      * Items from control panel
@@ -32,6 +44,7 @@ public class Person extends Movement {
     double chanceDeathInitial;
     double chanceBirth;
     double percentageGender;
+    double simSpeed;
 
     /**
      * Default constructor
@@ -55,6 +68,7 @@ public class Person extends Movement {
         this.chanceBirth = genetics[1];
         this.chanceDeathInitial = genetics[2];
         this.percentageGender = simControl.percentageGender;
+        this.simSpeed = simControl.simSpeed;
 
         this.age = 0;
 
@@ -109,10 +123,49 @@ public class Person extends Movement {
         return genetics;
     }
 
+    /**
+     * Manages age based on time scale and implements and increased death rate after age 60
+     */
     public void ageManager() {
+        this.timeScale += 1; // counts time in year by collecting a value each time the frame is repainted
 
+        if (timeScale == 5 * simSpeed) { // every five ticks, one year passes (default time if simSpeed = 1.0)
+            this.age += 1;
+
+            if (this.age == 60) { // once person reaches age 60, the death rate starts to take effect
+                if (Math.random() < this.myDeathRate) { // "first trial" - can the person survive the initial application of death rate
+                    this.myHealth = Health.dead;
+                }
+            } else if (this.age > 60) { // once a person is over the age of 60, their death rate will increase along an  exponential eqs
+                this.myDeathRate = Math.pow(2.0, this.age - 57.7);
+            }
+            updateAgeCategory(); // supplemental categorization of new age
+        }
     }
 
+    /**
+     * Updates age category to be used as reference for deciding dot color
+     * Quick reference guide to age categories
+     * baby 0-5, youth 5-12, teen 13-18, youngAdult 18-35, middleAge 35-60,
+     * senior 60-75, seniorPlus 75-100+
+     */
+    public void updateAgeCategory() {
+        if (this.age <= 5) {
+            this.myAgeCategory = Age.baby;
+        } else if (this.age < 13 && this.age > 5) {
+            this.myAgeCategory = Age.youth;
+        } else if (this.age <= 18 && this.age > 13) {
+            this.myAgeCategory = Age.teen;
+        } else if (this.age <= 35 && this.age > 18) {
+            this.myAgeCategory = Age.youngAdult;
+        } else if (this.age <= 60 && this.age > 35) {
+            this.myAgeCategory = Age.middleAge;
+        } else if (this.age <= 75 && this.age > 60) {
+            this.myAgeCategory = Age.senior;
+        } else if (this.age > 75) {
+            this.myAgeCategory = Age.seniorPlus;
+        }
+    }
     /**
      * Verifies birth possibility based on age range
      * @return
@@ -131,8 +184,23 @@ public class Person extends Movement {
     // Getters for class variables
     public int getAge(){ return this.age; }
 
+    public int getTimeScale() { return this.timeScale; }
+
+    public Age getMyAgeCategory() { return this.myAgeCategory; }
+
+    public boolean isDead() {
+        return this.myHealth == Health.dead;
+    }
+
+
     // Setters for class variables
     public void setID(int id){ this.ID = id;}
+
+    public void setAgeCategory(Age myAgeCategory) { this.myAgeCategory = myAgeCategory; }
+    /**
+     * Movement
+     * @return
+     */
     //getter for x
     public int getX()
     {

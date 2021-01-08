@@ -13,6 +13,9 @@ import View.ViewForPaint;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Painter extends Panel{
     private ArrayList<Wall> walls;
@@ -32,7 +35,38 @@ public class Painter extends Panel{
         jFrame.add(this); // add this class to the Jframe
         walls = new ArrayList<>();
     }
+
+    /**
+     * tester constructor not to be used for implementation
+     */
+    public Painter()
+    {
+        System.out.println("testing constructor entered ");
+        WallConstructor();
+    }
+
     //starts the painting process
+
+    /**
+     * wall adder for playground
+     */
+    @FunctionalInterface
+    interface WallcontrtorInterface
+    {
+        boolean checkEven(int num);
+    }
+
+    private void WallConstructor()
+    {
+        WallcontrtorInterface wallcontrtorInterface = (int num) -> {
+            return num % 2 == 0;
+        };
+       final String imagefilepath = "thin-black-line.png";
+        List<Wall> collection =  IntStream.range(0,4).mapToObj(operand -> new Wall(operand*5,operand*5,wallcontrtorInterface.checkEven(operand),imagefilepath)).collect(Collectors.toList());
+
+
+    }
+
 
     /**
      * this will set up the timer
@@ -73,6 +107,11 @@ public class Painter extends Panel{
     public ArrayList<Wall> getWalls()
     {
         return this.walls;
+    }
+    public static void main(String[] args)
+    {
+        Painter painter = new Painter();
+
     }
 
 }

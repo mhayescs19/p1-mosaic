@@ -16,8 +16,8 @@ public class Wall extends CollisionCheck {
 
     public  Wall(int x, int y , boolean vertical , String imagepath )
     {
-        this.x = 0; // sets where the wall will be placed
-        this.y = 0;//set where the wall will be placed
+        this.x = x; // sets where the wall will be placed
+        this.y = y;//set where the wall will be placed
         ImageLoader(imagepath); // grabs the image from the image path given by string
         ObjectSize();
         this.vertical = vertical;
