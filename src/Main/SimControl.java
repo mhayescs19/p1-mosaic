@@ -72,7 +72,7 @@ public class SimControl {
     }
 
     /**
-     *  class desgin to be called on every invok by the timer in Painter
+     *  class design to be called on every invoke by the timer in Painter
      * @see Painter
      * @param g graphics need to paint onto the panel
      */

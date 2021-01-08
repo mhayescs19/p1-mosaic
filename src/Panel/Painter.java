@@ -48,7 +48,7 @@ public class Painter extends Panel{
     //starts the painting process
 
     /**
-     * wall adder for playground
+     * wall adder for panel
      */
     @FunctionalInterface
     interface WallcontrtorInterface
@@ -58,13 +58,12 @@ public class Painter extends Panel{
 
     private void WallConstructor()
     {
-        WallcontrtorInterface wallcontrtorInterface = (int num) -> {
-            return num % 2 == 0;
-        };
+        WallcontrtorInterface wallcontrtorInterface = (int num) -> num%2==0;
        final String imagefilepath = "thin-black-line.png";
-        List<Wall> collection =  IntStream.range(0,4).mapToObj(operand -> new Wall(operand*5,operand*5,wallcontrtorInterface.checkEven(operand),imagefilepath)).collect(Collectors.toList());
-
-
+      //  List<Wall> collection =  IntStream.range(0,4).mapToObj(operand -> new Wall(operand*5,operand*5,wallcontrtorInterface.checkEven(operand),imagefilepath)).collect(Collectors.toList());
+       walls = (ArrayList<Wall>) IntStream.range(0,4).mapToObj(operand -> new Wall(operand*5,operand*5,wallcontrtorInterface.checkEven(operand),imagefilepath)).collect(Collectors.toList());
+       // List data type inherits all types of list in java so arraylist and linked list, so we can use a explict conversion to convert the stream into an arraylist, https://docs.oracle.com/javase/8/docs/api/?java/util/List.html
+        
     }
 
 
@@ -81,13 +80,11 @@ public class Painter extends Panel{
     }
     public void drawWalls(Graphics g)
     {
-
         g.setColor(Color.BLACK);
         for (Wall wall : walls)
         {
             wall.getImageIcon().paintIcon(this,g,getX(),getY());
         }
-
     }
 
 
@@ -108,6 +105,11 @@ public class Painter extends Panel{
     {
         return this.walls;
     }
+
+    /**
+     * testing static
+     * @param args
+     */
     public static void main(String[] args)
     {
         Painter painter = new Painter();
