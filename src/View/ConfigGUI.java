@@ -10,24 +10,19 @@ import javax.swing.*; // imports swing and awt libraries
 import java.awt.*;
 
 public class ConfigGUI extends JFrame {
-    String[] arrayEndConditions = {"Population", "Year"};  // Array with options to chose type of condition for ending sim
+    String arrayEndConditions[] = {"Population", "Year"};  // Array with options to chose type of condition for ending sim
 
     int defaultPop = 200;
     int defaultEndValue = 2050;
     double defaultBirthChance = 0.5*100;
     double defaultDeathChance = 0.15*100;
-    double defaultPercentageMales = 0.5*100;
-    double defaultPercentageFemales = 0.5*100;
     Object defaultEndCondition = arrayEndConditions[0];
 
-    int initialPop;
-    int EndValue;
-    double initialBirthChance;
-    double initialDeathChance;
-    Object EndCondition;
-    int initialYear;
-    double initialPercentageMales;
-    double initialPercentageFemales;
+    int finalPop;
+    int finalEndValue;
+    double finalBirthChance;
+    double finalDeathChance;
+    Object finalEndCondition;
 
     public ConfigGUI() {
         getContentPane().setBackground(new Color(41, 255, 255));  // Initializing content pane and setting color
@@ -63,7 +58,7 @@ public class ConfigGUI extends JFrame {
         sliderInitialPop.setPaintLabels(true); // If true, then paints the number labels beneath each major tick
         sliderInitialPop.addChangeListener(event -> {
             labelInitialPopView.setText(sliderInitialPop.getValue() + " people");  // Event listener that carries out code
-            // when the slider is dragged
+                                                                              // when the slider is dragged
         });
         getContentPane().add(sliderInitialPop); // Adds slider to the content pane
 
@@ -101,7 +96,7 @@ public class ConfigGUI extends JFrame {
         labelInitialChanceOfDeathCondition.setFont(new Font("Lucia Grande", Font.BOLD, 10));
         getContentPane().add(labelInitialChanceOfDeathCondition);
 
-        JLabel labelInitialChanceOfDeathView = new JLabel((int) (defaultDeathChance)+"%");
+        JLabel labelInitialChanceOfDeathView = new JLabel(defaultDeathChance+"%");
         labelInitialChanceOfDeathView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         labelInitialChanceOfDeathView.setForeground(Color.BLUE);
         labelInitialChanceOfDeathView.setBounds(690, 210, 70, 40);
@@ -129,7 +124,7 @@ public class ConfigGUI extends JFrame {
         labelInitialChanceOfBirthCondition.setFont(new Font("Lucia Grande", Font.BOLD, 10));
         getContentPane().add(labelInitialChanceOfBirthCondition);
 
-        JLabel labelInitialChanceOfBirthView = new JLabel((int) (defaultBirthChance)+"%");
+        JLabel labelInitialChanceOfBirthView = new JLabel(defaultBirthChance+"%");
         labelInitialChanceOfBirthView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
         labelInitialChanceOfBirthView.setForeground(Color.BLUE);
         labelInitialChanceOfBirthView.setBounds(690, 280, 70, 40);
@@ -147,29 +142,6 @@ public class ConfigGUI extends JFrame {
         });
         getContentPane().add(sliderInitialChanceOfBirth);
 
-        JLabel labelInitialPercentageOfMales = new JLabel("Percent Males");
-        labelInitialPercentageOfMales.setBounds(200, 365, 150, 30);
-        labelInitialPercentageOfMales.setFont(new Font("Lucia Grande", Font.BOLD, 12));
-        getContentPane().add(labelInitialPercentageOfMales);
-
-        JLabel labelInitialPercentageOfMalesView = new JLabel((int)(defaultPercentageMales)+"%");
-        labelInitialPercentageOfMalesView.setFont(new Font("Lucia Grande", Font.BOLD, 12));
-        labelInitialPercentageOfMalesView.setForeground(Color.BLUE);
-        labelInitialPercentageOfMalesView.setBounds(690, 350, 70, 40);
-        getContentPane().add(labelInitialPercentageOfMalesView);
-
-        JSlider sliderInitialPercentageOfMales = new JSlider(0, 100, 50);
-        sliderInitialPercentageOfMales.setMajorTickSpacing(10);
-        sliderInitialPercentageOfMales.setMinorTickSpacing(5);
-        sliderInitialPercentageOfMales.setPaintTicks(true);
-        sliderInitialPercentageOfMales.setPaintLabels(true);
-        sliderInitialPercentageOfMales.setSnapToTicks(true); // If true, then slider snaps to nearest tick whether major or minor
-        sliderInitialPercentageOfMales.setBounds(300, 360, 400, 60);
-        sliderInitialPercentageOfMales.addChangeListener(event -> {
-            labelInitialPercentageOfMalesView.setText(sliderInitialPercentageOfMales.getValue() + "%");
-        });
-        getContentPane().add(sliderInitialPercentageOfMales);
-
         JButton buttonResetToDefaults = new JButton("RESET TO DEFAULTS");
         buttonResetToDefaults.setForeground(Color.BLACK);
         buttonResetToDefaults.setFont(new Font("Lucia Grande", Font.BOLD, 12));
@@ -181,7 +153,6 @@ public class ConfigGUI extends JFrame {
             sliderInitialChanceOfBirth.setValue((int) defaultBirthChance);
             dropdownEndConditions.setSelectedItem(defaultEndCondition);
             textfieldEndValue.setText(String.valueOf(defaultEndValue));
-            sliderInitialPercentageOfMales.setValue((int) (defaultPercentageMales));
         });
         getContentPane().add(buttonResetToDefaults);
 
@@ -191,14 +162,11 @@ public class ConfigGUI extends JFrame {
         buttonStartSimulation.setBackground(Color.RED);
         buttonStartSimulation.setBounds(310, 520, 180, 60);
         buttonStartSimulation.addActionListener(event -> {
-            initialPop = sliderInitialPop.getValue();
-            initialDeathChance = sliderInitialChanceOfDeath.getValue()/100.0;
-            initialBirthChance = sliderInitialChanceOfBirth.getValue()/100.0;
-            EndValue = Integer.parseInt(textfieldEndValue.getText());
-            EndCondition = dropdownEndConditions.getSelectedItem();
-            initialYear = 2020;
-            initialPercentageMales = sliderInitialPercentageOfMales.getValue()/100.0;
-            initialPercentageFemales = 1.0 - initialPercentageMales;
+            finalPop = sliderInitialPop.getValue();
+            finalDeathChance = sliderInitialChanceOfDeath.getValue()/100.0;
+            finalBirthChance = sliderInitialChanceOfBirth.getValue()/100.0;
+            finalEndValue = Integer.parseInt(textfieldEndValue.getText());
+            finalEndCondition = dropdownEndConditions.getSelectedItem();
         });
         getContentPane().add(buttonStartSimulation);
     }
