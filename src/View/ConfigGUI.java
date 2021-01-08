@@ -20,14 +20,14 @@ public class ConfigGUI extends JFrame {
     double defaultPercentageFemales = 0.5*100;
     Object defaultEndCondition = arrayEndConditions[0];
 
-    int initialPop;
-    int EndValue;
-    double initialBirthChance;
-    double initialDeathChance;
-    Object EndCondition;
-    int initialYear;
-    double initialPercentageMales;
-    double initialPercentageFemales;
+    public int initialPop;
+    public int EndValue;
+    public double initialBirthChance;
+    public double initialDeathChance;
+    public Object EndCondition;
+    public int initialYear;
+    public double initialPercentageMales;
+    public double initialPercentageFemales;
 
     public ConfigGUI() {
         getContentPane().setBackground(new Color(41, 255, 255));  // Initializing content pane and setting color
