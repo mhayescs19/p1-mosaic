@@ -8,12 +8,10 @@
 package Main;
 
 import java.awt.*;
-import java.io.ObjectInputFilter;
 import java.util.ArrayList;
 import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
 import Panel.Painter;
-import View.ConfigGUI;
 
 
 public class SimControl {
