@@ -10,6 +10,7 @@ import javax.swing.*; // imports swing and awt libraries
 import java.awt.*;
 
 public class ConfigGUI extends JFrame {
+    public enum EndCondition {Population, Year}
     String[] arrayEndConditions = {"Population", "Year"};  // Array with options to chose type of condition for ending sim
 
     int defaultPop = 200;
@@ -18,16 +19,16 @@ public class ConfigGUI extends JFrame {
     double defaultDeathChance = 0.15*100;
     double defaultPercentageMales = 0.5*100;
     double defaultPercentageFemales = 0.5*100;
-    Object defaultEndCondition = arrayEndConditions[0];
+    EndCondition defaultEndCondition = EndCondition.Population;
 
     public int initialPop;
     public int EndValue;
     public double initialBirthChance;
     public double initialDeathChance;
-    public Object EndCondition;
     public int initialYear;
     public double initialPercentageMales;
     public double initialPercentageFemales;
+    public EndCondition endCondition;
 
     public ConfigGUI() {
         getContentPane().setBackground(new Color(41, 255, 255));  // Initializing content pane and setting color
@@ -179,7 +180,7 @@ public class ConfigGUI extends JFrame {
             sliderInitialPop.setValue(defaultPop);
             sliderInitialChanceOfDeath.setValue((int) defaultDeathChance);
             sliderInitialChanceOfBirth.setValue((int) defaultBirthChance);
-            dropdownEndConditions.setSelectedItem(defaultEndCondition);
+            dropdownEndConditions.setSelectedItem(String.valueOf(defaultEndCondition));
             textfieldEndValue.setText(String.valueOf(defaultEndValue));
             sliderInitialPercentageOfMales.setValue((int) (defaultPercentageMales));
         });
@@ -195,7 +196,7 @@ public class ConfigGUI extends JFrame {
             initialDeathChance = sliderInitialChanceOfDeath.getValue()/100.0;
             initialBirthChance = sliderInitialChanceOfBirth.getValue()/100.0;
             EndValue = Integer.parseInt(textfieldEndValue.getText());
-            EndCondition = dropdownEndConditions.getSelectedItem();
+            endCondition = EndCondition.valueOf(String.valueOf(dropdownEndConditions.getSelectedItem()));
             initialYear = 2020;
             initialPercentageMales = sliderInitialPercentageOfMales.getValue()/100.0;
             initialPercentageFemales = 1.0 - initialPercentageMales;
