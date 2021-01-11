@@ -6,6 +6,9 @@
  */
 
 package View;
+import Main.ConfigControl;
+import Main.SimControl;
+
 import javax.swing.*; // imports swing and awt libraries
 import java.awt.*;
 
@@ -21,6 +24,7 @@ public class ConfigGUI extends JFrame {
     String[] arrayEndConditions = {"Population", "Year"};
     EndConditions defaultEndConditionView = EndConditions.Population;
 
+    /*
     int initialPop;
     int EndValue;
     double initialBirthChance;
@@ -29,9 +33,9 @@ public class ConfigGUI extends JFrame {
     int initialYear;
     double initialPercentageMales;
     double initialPercentageFemales;
-    EndConditions endCondition;
+    EndConditions endCondition;*/
 
-    public ConfigGUI() {
+    public ConfigGUI(ConfigControl control) {
         getContentPane().setBackground(new Color(41, 255, 255));  // Initializing content pane and setting color
         setBounds(100, 100, 800, 600);  // Initializing size of content pane
         getContentPane().setLayout(null); // Content pane currently has nothing on it, it is blank
@@ -193,22 +197,24 @@ public class ConfigGUI extends JFrame {
         buttonStartSimulation.setBackground(Color.RED);
         buttonStartSimulation.setBounds(310, 520, 180, 60);
         buttonStartSimulation.addActionListener(event -> {
-            initialPop = sliderInitialPop.getValue();
-            initialDeathChance = sliderInitialChanceOfDeath.getValue()/100.0;
-            initialBirthChance = sliderInitialChanceOfBirth.getValue()/100.0;
-            EndValue = Integer.parseInt(textfieldEndValue.getText());
-            EndCondition = EndConditions.valueOf(String.valueOf(dropdownEndConditions.getSelectedItem()));
-            initialYear = 2020;
-            initialPercentageMales = sliderInitialPercentageOfMales.getValue()/100.0;
-            initialPercentageFemales = 1.0 - initialPercentageMales;
+            control.initialPop = sliderInitialPop.getValue();
+            control.initialDeathChance = sliderInitialChanceOfDeath.getValue()/100.0;
+            control.initialBirthChance = sliderInitialChanceOfBirth.getValue()/100.0;
+            control.EndValue = Integer.parseInt(textfieldEndValue.getText());
+            control.EndCondition = EndConditions.valueOf(String.valueOf(dropdownEndConditions.getSelectedItem()));
+            control.initialYear = 2020;
+            control.initialPercentageMales = sliderInitialPercentageOfMales.getValue()/100.0;
+            control.initialPercentageFemales = 1.0 - control.initialPercentageMales;
+
+            control.activateSimControl();
         });
         getContentPane().add(buttonStartSimulation);
     }
 
-    public static void main (String[] args){
+    /*public static void main (String[] args){
         ConfigGUI view = new ConfigGUI();
         view.setVisible(true);
-    }
+    }*/
     // Above code block is to show visual for testing and error correction purposes
     // Please remove whenever necessary
     // It most likely won't be included in the final project
