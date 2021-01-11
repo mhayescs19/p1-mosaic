@@ -8,6 +8,10 @@
 | Michael Hayes | [@mhayescs19](https://github.com/mhayescs19) | [Beniwal, Hayes](https://docs.google.com/document/d/1GPklRpwd5uyFdQljSgF4cZS6Uk6-eDf4EA25CQx3Ngc/edit?usp=sharing)
 
 ## 12/18 Weekly Project Contributions and Artifacts Log
+### Week 4
+| Contributor | Artifacts |
+| ----------- | --------- |
+| Nakul Nandhakumar | **ARTIFACTS:** <br> - Added [SimData](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Data/SimData.java#L7) <br> - Imported and defined Simulation Data values using [constructor](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Data/SimData.java#L24) <br> - Method to create file for temporarily displaying data called [createNewDataFile](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Data/SimData.java#L79) <br> - Method to write data on created file called [writeOnDataFile](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Data/SimData.java#L93) <br> - Added [genderPercentageSlider](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Data/SimData.java#L93) to ConfigGUI to set up inital genders <br> <br> **RUNTIME GUIDANCE:** <br> - SimData: Go to the Data folder and open the SimData class file. See the temporary main method at the bottom of the class file and hit run (the green play button) next to the main method to run the code for SimData. <br> - ConfigGUI: Go to the View folder and open the ConfigGUI class file. On Lines 208 - 210 of the class file, there is a temporary main method to display the GUI. Hit the run button (the green play button) next to the main method to run the code to see the GUI <br> <br> **SCRUMBOARD TICKET LINKS:** <br> - [SimData](https://github.com/mhayescs19/p1-mosaic/issues/18) <br> - [ConfigGUI](https://github.com/mhayescs19/p1-mosaic/issues/7)|
 ### Week 3
 | Contributor | Self Grade /20 | Scrum Grade /5 | Artifacts |
 | ----------- | --------- |  --------- |  --------- |
