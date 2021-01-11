@@ -28,6 +28,13 @@ public class SimControl {
     public double percentageGender;
     public double simSpeed;
 
+    public SimControl(ConfigControl control) {
+        this.chanceDeathInitial = control.initialDeathChance;
+        this.chanceBirth = control.initialBirthChance;
+        this.percentageGender = control.initialPercentageMales;
+        this.simSpeed = 0;
+    }
+
     /**
      * Creates population of Person objects in an ArrayList w/custom ID
      * xImplementation of view later
@@ -129,9 +136,9 @@ public class SimControl {
 
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SimControl simControl = new SimControl();
 
         simControl.beginSimulation();
-    }
+    }*/
 }
