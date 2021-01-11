@@ -12,9 +12,6 @@ public class Main {
 	// write your code here
         System.out.println("Hello world P1-mosaic");
 
-        ConfigControl config = new ConfigControl();
-
-
-
+        ConfigControl configControl = new ConfigControl();
     }
 }

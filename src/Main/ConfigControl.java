@@ -23,4 +23,9 @@ public class ConfigControl {
     }
 
     public ConfigControl getConfigControl() { return this; }
+
+    public void activateSimControl() {
+        SimControl simControl = new SimControl(this);
+
+    }
 }

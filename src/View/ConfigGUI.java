@@ -7,6 +7,7 @@
 
 package View;
 import Main.ConfigControl;
+import Main.SimControl;
 
 import javax.swing.*; // imports swing and awt libraries
 import java.awt.*;
@@ -204,6 +205,8 @@ public class ConfigGUI extends JFrame {
             control.initialYear = 2020;
             control.initialPercentageMales = sliderInitialPercentageOfMales.getValue()/100.0;
             control.initialPercentageFemales = 1.0 - control.initialPercentageMales;
+
+            control.activateSimControl();
         });
         getContentPane().add(buttonStartSimulation);
     }
