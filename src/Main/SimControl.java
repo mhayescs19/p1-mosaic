@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
 import Panel.Painter;
+import View.ConfigGUI;
 
 
 public class SimControl {
@@ -22,16 +23,27 @@ public class SimControl {
     ArrayList<Person> population;
     // Values from ConfigGUI
     public int initialPopulation;
+    public int currentPopulation;
     // Specific value that are to be shared with other classes
     public double chanceDeathInitial;
     public double chanceBirth;
     public double percentageGender;
+    public Object EndCondition;
+    public int EndValue;
+    public int initialYear;
+    public int currentYear;
     public double simSpeed;
 
     public SimControl(ConfigControl control) {
         this.chanceDeathInitial = control.initialDeathChance;
         this.chanceBirth = control.initialBirthChance;
         this.percentageGender = control.initialPercentageMales;
+        this.initialPopulation = control.initialPop;
+        this.currentPopulation = control.initialPop;
+        this.EndCondition = control.EndCondition;
+        this.EndValue = control.EndValue;
+        this.initialYear = control.initialYear;
+        this.currentYear = control.initialYear;
         this.simSpeed = 0;
     }
 
@@ -70,6 +82,7 @@ public class SimControl {
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
 
                         population.add(newBaby); // new birth of person added to master population list
+                        currentPopulation++;
                     }
                 }
             }
@@ -131,6 +144,19 @@ public class SimControl {
             }
 
             g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+        }
+    }
+
+    public void endSimulation(){
+        if (EndCondition == ConfigGUI.EndConditions.Population){
+            if (currentPopulation >= EndValue) {
+                painter.quit = false;
+            }
+        }
+        if (EndCondition == ConfigGUI.EndConditions.Year){
+            if (currentYear >= EndValue) {
+                painter.quit = false;
+            }
         }
     }
 
