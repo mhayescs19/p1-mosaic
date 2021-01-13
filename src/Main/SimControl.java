@@ -150,12 +150,12 @@ public class SimControl {
     public void endSimulation(){
         if (EndCondition == ConfigGUI.EndConditions.Population){
             if (currentPopulation >= EndValue) {
-                painter.quit = false;
+                painter.quit = true;
             }
         }
         if (EndCondition == ConfigGUI.EndConditions.Year){
             if (currentYear >= EndValue) {
-                painter.quit = false;
+                painter.quit = true;
             }
         }
     }
