@@ -58,7 +58,7 @@ public class Painter extends Panel{
         AbstractMap.SimpleEntry<Integer , Integer>  wallpostion(int num);
     }
     @FunctionalInterface
-    interface WallcontrtorInterface
+   private interface WallcontrtorInterface
     {
        boolean checkEven(int num);
     }
