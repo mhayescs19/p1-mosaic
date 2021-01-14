@@ -182,6 +182,5 @@ public class SimControl {
         SimControl simcont = new SimControl(con);
         simcont.endSimulation();
         simcont.updateYear();
-
     }
 }
