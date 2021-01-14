@@ -8,6 +8,7 @@
 package Main;
 
 import java.awt.*;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
@@ -178,6 +179,16 @@ public class SimControl {
         }
         System.out.println("updateYear works."); // Test code to see if method runs properly
     }
+
+    /**
+     * a getter that returns the width and height
+     * @return a tuple pair Inteager that give the width and height of the panel
+     */
+    public AbstractMap.SimpleEntry<Integer, Integer> getBoundsForView()
+    {
+        return new AbstractMap.SimpleEntry<>(painter.getWidth(), painter.getHeight());
+    }
+
 
 
 

@@ -75,7 +75,7 @@ public abstract class Movement extends CollisionCheck {
     private void GenXY()
         {
             Random random = new Random(System.currentTimeMillis());
-            x = random.nextInt(xEnd);
+            x = random.nextInt(xEnd); // set to zero needs to be set to boundary of the screen
             y = random.nextInt(yEnd);
         }
         public void CollisionHorizontal()
