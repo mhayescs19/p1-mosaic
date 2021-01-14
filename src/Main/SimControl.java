@@ -168,11 +168,14 @@ public class SimControl {
         }
     }
 
-
-
-    /*public static void main(String[] args) {
-        SimControl simControl = new SimControl();
-
-        simControl.beginSimulation();
-    }*/
+    /**
+     * Method tester for SimControl
+     * @param args
+     */
+    public static void main(String[] args) {
+        ConfigControl con = new ConfigControl();
+        SimControl simcont = new SimControl(con);
+        simcont.endSimulation();
+        simcont.updateYear();
+    }
 }
