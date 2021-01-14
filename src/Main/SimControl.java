@@ -170,8 +170,11 @@ public class SimControl {
         System.out.println("updateYear works."); // Test code to see if method runs properly
     }
 
+
+
+
     /**
-     * Method tester for SimControl
+     * Method tester for SimControl. Will NOT be used for any other purpose than testing code.
      * @param args
      */
     public static void main(String[] args) {
