@@ -159,6 +159,7 @@ public class SimControl {
                 painter.quit = true;
             }
         }
+        System.out.println("endSimulation works.");  // Test code to see if method runs properly
     }
 
     public void updateYear() {
@@ -166,6 +167,7 @@ public class SimControl {
         if (Time%5 == 0){
             currentYear++;
         }
+        System.out.println("updateYear works."); // Test code to see if method runs properly
     }
 
     /**
