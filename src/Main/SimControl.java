@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
 import Panel.Painter;
+import View.MainGUI;
 
 
 public class SimControl {
@@ -28,11 +29,19 @@ public class SimControl {
     public double percentageGender;
     public double simSpeed;
 
+    // launch screen
+    public MainGUI view;
+
     public SimControl(ConfigControl control) {
         this.chanceDeathInitial = control.initialDeathChance;
         this.chanceBirth = control.initialBirthChance;
         this.percentageGender = control.initialPercentageMales;
         this.simSpeed = 0;
+
+        this.view = new MainGUI();
+        view.setVisible(true);
+
+        this.beginSimulation();
     }
 
     /**
