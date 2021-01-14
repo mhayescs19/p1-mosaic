@@ -120,6 +120,7 @@ public class Painter extends Panel{
             // add paint stuff
             Time += 16; // constant will change this
         view.PaintMainView(g); // sara code but with set up to be painted every pass by the timer
+        simControl.PaintPopulation(g);
         drawWalls(g);
 
         //end condition
