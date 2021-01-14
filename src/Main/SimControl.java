@@ -13,6 +13,7 @@ import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
 import Panel.Painter;
 import View.ConfigGUI;
+import View.MainGUI;
 
 
 public class SimControl {
@@ -35,6 +36,9 @@ public class SimControl {
     public double simSpeed;
     private int Time = 0;
 
+    // MVC
+    public MainGUI view = new MainGUI();
+
     public SimControl(ConfigControl control) {
         this.chanceDeathInitial = control.initialDeathChance;
         this.chanceBirth = control.initialBirthChance;
@@ -46,6 +50,11 @@ public class SimControl {
         this.initialYear = control.initialYear;
         this.currentYear = control.initialYear;
         this.simSpeed = 0;
+
+        this.view = new MainGUI();
+        view.setVisible(true);
+
+        //this.beginSimulation();
     }
 
     /**
