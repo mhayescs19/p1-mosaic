@@ -103,6 +103,7 @@ public class SimData {
             dataFileWriter.write("Current Population: " + currentPop);
             dataFileWriter.write("Initial Year: " + initialYear);
             dataFileWriter.write("Current Year: " + currentYear);
+            dataFileWriter.flush();
             dataFileWriter.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {

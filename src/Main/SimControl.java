@@ -33,6 +33,7 @@ public class SimControl {
     public int initialYear;
     public int currentYear;
     public double simSpeed;
+    private int Time = 0;
 
     public SimControl(ConfigControl control) {
         this.chanceDeathInitial = control.initialDeathChance;
@@ -157,6 +158,13 @@ public class SimControl {
             if (currentYear >= EndValue) {
                 painter.quit = true;
             }
+        }
+    }
+
+    public void updateYear() {
+        Time++;
+        if (Time%5 == 0){
+            currentYear++;
         }
     }
 
