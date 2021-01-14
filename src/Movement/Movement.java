@@ -29,12 +29,26 @@ public abstract class Movement extends CollisionCheck {
           // xEnd , yEnd set to boarders of the screen
           // set vx and vy to speeds
           // x and y velocity will random depending on object
-          this.width =0;
-         this.height =0;
+          this.width =50;
+         this.height =50;
           Genvelo();
           GenXY();
 
       }
+    public Movement(int width , int height)
+    {
+
+        // xEnd , yEnd set to boarders of the screen
+        // set vx and vy to speeds
+        // x and y velocity will random depending on object
+        xEnd = width;
+        yEnd = height;
+        this.width =50;
+        this.height =50;
+        Genvelo();
+        GenXY();
+
+    }
 
         public void Velcoity()
         {

@@ -51,8 +51,7 @@ public class Person extends Movement {
      * @param simControl
      */
     public Person(SimControl simControl){
-        super.xEnd = simControl.getBoundsForView().getKey(); // width of screen
-        super.yEnd = simControl.getBoundsForView().getValue(); // height of the screen
+        super(simControl.getBoundsForView().getKey(), simControl.getBoundsForView().getValue());
         this.simControl = simControl;
         this.chanceBirth = simControl.chanceBirth;
         this.chanceDeathInitial = simControl.chanceDeathInitial;

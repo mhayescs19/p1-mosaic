@@ -52,10 +52,10 @@ public class SimControl {
         this.currentYear = control.initialYear;
         this.simSpeed = 0;
 
-        this.view = new MainGUI();
+       this.view = new MainGUI();
         view.setVisible(true);
 
-        //this.beginSimulation();
+        this.beginSimulation();
     }
 
     /**
@@ -63,15 +63,18 @@ public class SimControl {
      * xImplementation of view later
      */
     public void beginSimulation() {
+
+        population = new ArrayList<>(); // master list of population
         painter = new Painter(this); // this refers to this class
-        population = new ArrayList<Person>(); // master list of population
-        painter.Start(); // starts the painter
-        for (int i = 0; i < initialPopulation; i++) { // initial creation of population
+        for (int i = 0; i < 25; i++) { // initial creation of population
             Person newPerson = new Person(this);
             newPerson.setID(i);
 
             population.add(newPerson);
         }
+
+        painter.Start(); // starts the painter
+
     }
 
     /**
@@ -200,7 +203,7 @@ public class SimControl {
     public static void main(String[] args) {
         ConfigControl con = new ConfigControl();
         SimControl simcont = new SimControl(con);
-        simcont.endSimulation();
+       simcont.endSimulation();
         simcont.updateYear();
 
     }
