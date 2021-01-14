@@ -105,6 +105,7 @@ public class SimData {
             dataFileWriter.write("Current Year: " + currentYear);
             dataFileWriter.flush();
             dataFileWriter.close(); // look into using try with resource
+
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
