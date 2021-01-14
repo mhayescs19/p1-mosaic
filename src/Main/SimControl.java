@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
 import Panel.Painter;
+import View.ConfigGUI;
 
 
 public class SimControl {
@@ -22,16 +23,28 @@ public class SimControl {
     ArrayList<Person> population;
     // Values from ConfigGUI
     public int initialPopulation;
+    public int currentPopulation;
     // Specific value that are to be shared with other classes
     public double chanceDeathInitial;
     public double chanceBirth;
     public double percentageGender;
+    public Object EndCondition;
+    public int EndValue;
+    public int initialYear;
+    public int currentYear;
     public double simSpeed;
+    private int Time = 0;
 
     public SimControl(ConfigControl control) {
         this.chanceDeathInitial = control.initialDeathChance;
         this.chanceBirth = control.initialBirthChance;
         this.percentageGender = control.initialPercentageMales;
+        this.initialPopulation = control.initialPop;
+        this.currentPopulation = control.initialPop;
+        this.EndCondition = control.EndCondition;
+        this.EndValue = control.EndValue;
+        this.initialYear = control.initialYear;
+        this.currentYear = control.initialYear;
         this.simSpeed = 0;
     }
 
@@ -70,6 +83,7 @@ public class SimControl {
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
 
                         population.add(newBaby); // new birth of person added to master population list
+                        currentPopulation++;
                     }
                 }
             }
@@ -134,11 +148,40 @@ public class SimControl {
         }
     }
 
+    public void endSimulation(){
+        if (EndCondition == ConfigGUI.EndConditions.Population){
+            if (currentPopulation >= EndValue) {
+                painter.quit = true;
+            }
+        }
+        if (EndCondition == ConfigGUI.EndConditions.Year){
+            if (currentYear >= EndValue) {
+                painter.quit = true;
+            }
+        }
+        System.out.println("endSimulation works.");  // Test code to see if method runs properly
+    }
+
+    public void updateYear() {
+        Time++;
+        if (Time%5 == 0){
+            currentYear++;
+        }
+        System.out.println("updateYear works."); // Test code to see if method runs properly
+    }
 
 
-    /*public static void main(String[] args) {
-        SimControl simControl = new SimControl();
 
-        simControl.beginSimulation();
-    }*/
+
+    /**
+     * Method tester for SimControl. Will NOT be used for any other purpose than testing code.
+     * @param args
+     */
+    public static void main(String[] args) {
+        ConfigControl con = new ConfigControl();
+        SimControl simcont = new SimControl(con);
+        simcont.endSimulation();
+        simcont.updateYear();
+
+    }
 }

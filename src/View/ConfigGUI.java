@@ -24,17 +24,6 @@ public class ConfigGUI extends JFrame {
     String[] arrayEndConditions = {"Population", "Year"};
     EndConditions defaultEndConditionView = EndConditions.Population;
 
-    /*
-    int initialPop;
-    int EndValue;
-    double initialBirthChance;
-    double initialDeathChance;
-    Object EndCondition;
-    int initialYear;
-    double initialPercentageMales;
-    double initialPercentageFemales;
-    EndConditions endCondition;*/
-
     public ConfigGUI(ConfigControl control) {
         getContentPane().setBackground(new Color(41, 255, 255));  // Initializing content pane and setting color
         setBounds(100, 100, 800, 600);  // Initializing size of content pane

@@ -14,7 +14,7 @@ public class ConfigControl {
     public int initialYear;
     public double initialPercentageMales;
     public double initialPercentageFemales;
-    public ConfigGUI.EndConditions endCondition;
+    public ConfigGUI.EndConditions EndConditions;
 
     public ConfigControl() {
 
@@ -22,7 +22,6 @@ public class ConfigControl {
         view.setVisible(true);
     }
 
-    public ConfigControl getConfigControl() { return this; }
 
     public void activateSimControl() {
         SimControl simControl = new SimControl(this);
