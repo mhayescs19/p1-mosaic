@@ -70,7 +70,7 @@ public class Person extends Movement {
         this.percentageGender = simControl.percentageGender;
         this.simSpeed = simControl.simSpeed;
 
-        this.age = 0;
+        this.age = 35;
 
         this.init();
     }

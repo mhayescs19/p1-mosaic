@@ -114,7 +114,7 @@ public class Painter extends Panel{
         g.setColor(Color.BLACK);
         for (Wall wall : walls)
         {
-            wall.getImageIcon().paintIcon(this,g,getX(),getY());
+            wall.getImageIcon().paintIcon(this,g,wall.getX(),wall.getY());
         }
     }
 
