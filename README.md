@@ -16,7 +16,7 @@
 <br> -Added [Collison loop](https://github.com/mhayescs19/p1-mosaic/blob/DataBranch/src/Main/SimControl.java#L113) <br> - method that loops through the population to see if they collied or not if so changes veloctity <br> 
 **Runtime Guidance**
 <br> - Not applicatble applicable <br>
-**SCRUMBOAD TICKET LINKS:** 
+**SCRUMBOAD TICKET LINKS:** |
 ### Week 3
 | Contributor | Self Grade /20 | Scrum Grade /5 | Artifacts |
 | ----------- | --------- |  --------- |  --------- |
