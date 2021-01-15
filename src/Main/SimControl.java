@@ -8,6 +8,7 @@
 package Main;
 
 import java.awt.*;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
@@ -51,9 +52,8 @@ public class SimControl {
         this.currentYear = control.initialYear;
         this.simSpeed = 0;
 
-        this.view = new MainGUI();
+       this.view = new MainGUI();
         view.setVisible(true);
-
         this.beginSimulation();
     }
 
@@ -62,15 +62,17 @@ public class SimControl {
      * xImplementation of view later
      */
     public void beginSimulation() {
+
+        population = new ArrayList<>(); // master list of population
         painter = new Painter(this); // this refers to this class
-        population = new ArrayList<Person>(); // master list of population
-        painter.Start(); // starts the painter
-        for (int i = 0; i < initialPopulation; i++) { // initial creation of population
+        for (int i = 0; i < 25; i++) { // initial creation of population
             Person newPerson = new Person(this);
             newPerson.setID(i);
-
             population.add(newPerson);
         }
+
+        painter.Start(); // starts the painter
+
     }
 
     /**
@@ -134,9 +136,9 @@ public class SimControl {
              * If dead, no velocity, otherwise velocity remains
              */
             if (person.isDead()) { // death condition
-                person.Velcoity0();
+                person.Velocity0();
             } else {
-                person.Velcoity();//updates velocity
+                person.Velocity();//updates velocity
             }
 
             switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
@@ -179,6 +181,16 @@ public class SimControl {
         System.out.println("updateYear works."); // Test code to see if method runs properly
     }
 
+    /**
+     * a getter that returns the width and height
+     * @return a tuple pair Inteager that give the width and height of the panel
+     */
+    public AbstractMap.SimpleEntry<Integer, Integer> getBoundsForView()
+    {
+        return new AbstractMap.SimpleEntry<>(painter.getWidth(), painter.getHeight());
+    }
+
+
 
 
 
@@ -189,7 +201,8 @@ public class SimControl {
     public static void main(String[] args) {
         ConfigControl con = new ConfigControl();
         SimControl simcont = new SimControl(con);
-        simcont.endSimulation();
+       simcont.endSimulation();
         simcont.updateYear();
+
     }
 }

@@ -51,11 +51,11 @@ public class Person extends Movement {
      * @param simControl
      */
     public Person(SimControl simControl){
+        super(simControl.getBoundsForView().getKey(), simControl.getBoundsForView().getValue());
         this.simControl = simControl;
         this.chanceBirth = simControl.chanceBirth;
         this.chanceDeathInitial = simControl.chanceDeathInitial;
         this.percentageGender = simControl.percentageGender;
-
         this.init();
     }
 
@@ -64,6 +64,7 @@ public class Person extends Movement {
      */
     // Note: Will update genetics for clarity in the future... separate Genetics class?
     public Person(SimControl simControl, double[] genetics) {
+        super(simControl.getBoundsForView().getKey(), simControl.getBoundsForView().getValue());
         this.simControl = simControl;
         this.chanceBirth = genetics[1];
         this.chanceDeathInitial = genetics[2];
@@ -89,6 +90,8 @@ public class Person extends Movement {
         this.myBirthRate = chanceBirth;
         // sets Person death probability at age 60
         this.myDeathRate = chanceDeathInitial;
+        // sets initial age category
+        this.setAgeCategory();
     }
 
     /**
@@ -130,7 +133,8 @@ public class Person extends Movement {
         this.timeScale += 1; // counts time in year by collecting a value each time the frame is repainted
 
         if (timeScale == 5 * simSpeed) { // every five ticks, one year passes (default time if simSpeed = 1.0)
-            this.age += 1;
+            timeScale = 0; // resets time scale
+            this.age += 1; // one year is added
 
             if (this.age == 60) { // once person reaches age 60, the death rate starts to take effect
                 if (Math.random() < this.myDeathRate) { // "first trial" - can the person survive the initial application of death rate
@@ -139,7 +143,7 @@ public class Person extends Movement {
             } else if (this.age > 60) { // once a person is over the age of 60, their death rate will increase along an  exponential eqs
                 this.myDeathRate = Math.pow(2.0, this.age - 57.7);
             }
-            updateAgeCategory(); // supplemental categorization of new age
+            setAgeCategory(); // supplemental categorization of new age
         }
     }
 
@@ -149,7 +153,7 @@ public class Person extends Movement {
      * baby 0-5, youth 5-12, teen 13-18, youngAdult 18-35, middleAge 35-60,
      * senior 60-75, seniorPlus 75-100+
      */
-    public void updateAgeCategory() {
+    public void setAgeCategory() {
         if (this.age <= 5) {
             this.myAgeCategory = Age.baby;
         } else if (this.age < 13 && this.age > 5) {
