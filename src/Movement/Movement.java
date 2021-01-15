@@ -74,7 +74,7 @@ public abstract class Movement extends CollisionCheck {
      */
     private void Genvelo()
         {
-            Random random = new Random(System.currentTimeMillis());
+            Random random = new Random();
             IntStream intStream = random.ints(2,0,10); // get two random ints range 0 to 10 or 9 idr
             int[] array = intStream.toArray(); // cast to array
             vx = array[0];
@@ -88,7 +88,7 @@ public abstract class Movement extends CollisionCheck {
      */
     private void GenXY()
         {
-            Random random = new Random(System.currentTimeMillis());
+            Random random = new Random();
             x = random.nextInt(xEnd); // set to zero needs to be set to boundary of the screen
             y = random.nextInt(yEnd);
         }
