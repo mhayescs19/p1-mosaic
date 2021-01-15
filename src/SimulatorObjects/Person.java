@@ -64,6 +64,7 @@ public class Person extends Movement {
      */
     // Note: Will update genetics for clarity in the future... separate Genetics class?
     public Person(SimControl simControl, double[] genetics) {
+        super(simControl.getBoundsForView().getKey(), simControl.getBoundsForView().getValue());
         this.simControl = simControl;
         this.chanceBirth = genetics[1];
         this.chanceDeathInitial = genetics[2];

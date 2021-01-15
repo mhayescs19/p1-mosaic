@@ -50,7 +50,7 @@ public abstract class Movement extends CollisionCheck {
 
     }
 
-        public void Velcoity()
+        public void Velocity()
         {
             this.x +=vx;
             this.y+=vy;
@@ -63,7 +63,7 @@ public abstract class Movement extends CollisionCheck {
                 vy *=-1;
             }
         }
-        public void Velcoity0() //stop condtion maybe good for death
+        public void Velocity0() //stop condtion maybe good for death
         {
             vx =0;
             vy=0;
