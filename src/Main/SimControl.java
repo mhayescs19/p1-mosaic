@@ -54,7 +54,7 @@ public class SimControl {
         this.view = new MainGUI();
         view.setVisible(true);
 
-        //this.beginSimulation();
+        this.beginSimulation();
     }
 
     /**
