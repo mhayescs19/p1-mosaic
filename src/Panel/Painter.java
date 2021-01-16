@@ -30,11 +30,13 @@ public class Painter extends Panel{
     double Time = 0; // will be used to track how long the program has been running
     public Painter(SimControl sim)
     {
+        this.setLayout(null);
         this.simControl = sim; // pass the simControl in a parameter
         jFrame = new JFrame(name_of_panel);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setVisible(true);
+        jFrame.setSize(600,800);
         jFrame.add(this); // add this class to the Jframe
+        jFrame.setVisible(true);
         walls = new ArrayList<>();
         WallConstructor();
     }
@@ -73,6 +75,8 @@ public class Painter extends Panel{
                 WallcontrtorInterface wallcontrtorInterface = (int num) -> num%2==0; //defines boolean function
                 AbstractMap.SimpleEntry<Integer, Integer> temp = wallpostion(number);
                 walls.add(new Wall(temp.getKey(), temp.getValue(),wallcontrtorInterface.checkEven(number),path));
+                walls.get(number).setVisible(true);
+
             }
 
             @Override
@@ -110,7 +114,7 @@ public class Painter extends Panel{
         g.setColor(Color.BLACK);
         for (Wall wall : walls)
         {
-            wall.getImageIcon().paintIcon(this,g,getX(),getY());
+            wall.getImageIcon().paintIcon(this,g, wall.getX(), wall.getY());
         }
     }
 
@@ -120,8 +124,8 @@ public class Painter extends Panel{
             // add paint stuff
             Time += 16; // constant will change this
         view.PaintMainView(g); // sara code but with set up to be painted every pass by the timer
-        simControl.PaintPopulation(g);
         drawWalls(g);
+        simControl.PaintPopulation(g);
 
         //end condition
         if (quit)

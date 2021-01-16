@@ -8,6 +8,7 @@
 package Main;
 
 import java.awt.*;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import SimulatorObjects.Person;
 import SimulatorObjects.Wall;
@@ -51,10 +52,9 @@ public class SimControl {
         this.currentYear = control.initialYear;
         this.simSpeed = 0;
 
-        this.view = new MainGUI();
+       this.view = new MainGUI();
         view.setVisible(true);
-
-        //this.beginSimulation();
+        this.beginSimulation();
     }
 
     /**
@@ -62,15 +62,18 @@ public class SimControl {
      * xImplementation of view later
      */
     public void beginSimulation() {
+
+        population = new ArrayList<>(); // master list of population
         painter = new Painter(this); // this refers to this class
-        population = new ArrayList<Person>(); // master list of population
-        painter.Start(); // starts the painter
-        for (int i = 0; i < initialPopulation; i++) { // initial creation of population
+        for (int i = 0; i < 25; i++) { // initial creation of population
             Person newPerson = new Person(this);
             newPerson.setID(i);
-
             population.add(newPerson);
+            System.out.println("SimControl.java - Population: Person " + i + " age: " + newPerson.getAge() + " added to ArrayList");
         }
+        System.out.println("SimControl.java - Population size: " + population.size());
+        painter.Start(); // starts the painter
+
     }
 
     /**
@@ -86,15 +89,20 @@ public class SimControl {
 
             for (Person otherPerson : population) { // cycles through entire population (Java style loop)
                 if (firstPerson.collision(otherPerson)) { // compares firstPerson against every other object in population for a collision
+                    //System.out.println("SimControl.java - Person: Collision detected!");
                     double[] genetics = firstPerson.collisionDetected(otherPerson);
 
-                    if (genetics[0] == 1) { // current value to represent a birth
+                    if (genetics[0] == -1.0) { // current value to represent a birth
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
 
                         population.add(newBaby); // new birth of person added to master population list
+                        System.out.println("SimControl.java - Person: baby born!");
                         currentPopulation++;
                     }
                 }
+            }
+            if (i == 0) {
+                this.updateYear();
             }
         }
 
@@ -113,11 +121,12 @@ public class SimControl {
         {
 
 
-            for(Wall wall: painter.getWalls()) // for each
+            /*for(Wall wall: painter.getWalls()) // for each
             {
                    // check for collision with walls in here
                if ( person.collision(wall))
                {
+                   System.out.println("SimControl.java - Person " + person.getID() + " hit a wall");
                         if (wall.vertical)
                         {
                             person.CollisionVertical();
@@ -127,16 +136,16 @@ public class SimControl {
                             person.CollisionHorizontal();
                         }
                }
-            }
+            }*/
             person.ageManager();
 
             /**
              * If dead, no velocity, otherwise velocity remains
              */
             if (person.isDead()) { // death condition
-                person.Velcoity0();
+                person.Velocity0();
             } else {
-                person.Velcoity();//updates velocity
+                person.Velocity();//updates velocity
             }
 
             switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
@@ -173,11 +182,23 @@ public class SimControl {
 
     public void updateYear() {
         Time++;
-        if (Time%5 == 0){
+        if (Time % 15 == 0){
             currentYear++;
+            System.out.println("SimControl.java - 1 year has passed. Current year: " + currentYear);
+
         }
-        System.out.println("updateYear works."); // Test code to see if method runs properly
+        //System.out.println("updateYear works."); // Test code to see if method runs properly
     }
+
+    /**
+     * a getter that returns the width and height
+     * @return a tuple pair Inteager that give the width and height of the panel
+     */
+    public AbstractMap.SimpleEntry<Integer, Integer> getBoundsForView()
+    {
+        return new AbstractMap.SimpleEntry<>(painter.getWidth(), painter.getHeight());
+    }
+
 
 
 
@@ -189,7 +210,7 @@ public class SimControl {
     public static void main(String[] args) {
         ConfigControl con = new ConfigControl();
         SimControl simcont = new SimControl(con);
-        simcont.endSimulation();
+       simcont.endSimulation();
         simcont.updateYear();
 
     }
