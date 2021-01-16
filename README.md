@@ -30,7 +30,7 @@ Increase in population is determined by dot interaction (event based), while dec
 
 4. [SimControl & Person](https://github.com/mhayescs19/p1-mosaic/issues/20) <br> The Person class  creates the "people" of the population simulation and all of their details such as age, health status, birth chance, death chance, etc. SimControl manages the execution of the simulation and calls all the methods in order to run the simulation. It manages the status of each person. Created by Michael Hayes.
 
-5. [MainGUI](https://github.com/mhayescs19/p1-mosaic/issues/8) <br> This class creates one of the panels that is needed for the balls to appear on. It utilizes a paint method from the class Paint to display the ovals that is the island. It has a puase button as well which will be implemented in the project later. Created by Sara Beniwal. 
+5. [MainGUI](https://github.com/mhayescs19/p1-mosaic/issues/8) <br> This class creates one of the panels that is needed for the balls to appear on. It utilizes a paint method from the class Paint to display the ovals which is the island. It has a pause button as well which will be implemented in the project later. Created by Sara Beniwal. 
 
 ## 1/15 Weekly Project Contributions and Artifacts Log
 ### Week 5
