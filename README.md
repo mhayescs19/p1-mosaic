@@ -21,7 +21,7 @@ Increase in population is determined by dot interaction (event based), while dec
 2. Run from Main.java (inside of the "Main" package) OR set up configuration to Main
 <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-in-main.png" height="auto" width="52%"> <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-configuration.png" width="40%" height="auto">
 
-## Featured ScrumBoard Tickets
+## Featured ScrumBoard Tickets (20/20)
 1. [Integrating ConfigGUI with SimControl Using ConfigControl](https://github.com/mhayescs19/p1-mosaic/issues/33) <br> For the team, this was a big step towards getting the project to actually run and visually experience all of our past hard work. Got the MainGUI where simulation happens to pop up after ConfigGUI "start" button is pressed. Every member of the group participated in this ticket.
 
 2. [ConfigGUI](https://github.com/mhayescs19/p1-mosaic/issues/7) <br> ConfigGUI is where the user enters intial specifications for simulation, length of simulation, and starts the simulation. Sliders, dropdown menus, Textfields, and buttons from JFrame are all utilized in this class. Initiliazes all the variables like inital population and passes them to SimControl. Created by Nakul Nandhakumar.
