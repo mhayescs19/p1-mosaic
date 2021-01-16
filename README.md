@@ -32,7 +32,7 @@
 | Michael Hayes |  **ARTIFACTS:** <br> <br> **RUNTIME GUIDANCE:** <br> <br> **SCRUMBOARD TICKET LINKS**|
 | Sara Beniwal | **ARTIFACTS:** <br> <br> **RUNTIME GUIDANCE:** <br> <br> **SCRUMBOARD TICKET LINKS** |
 
-## 12/18 Weekly Project Contributions and Artifacts Log
+## 1/08 Weekly Project Contributions and Artifacts Log
 ### Week 4
 | Contributor | Artifacts |
 | ----------- | --------- |
@@ -41,6 +41,7 @@
 | Michael Hayes | **ARTIFACTS:** <br> - [setup](https://github.com/mhayescs19/p1-mosaic/blob/5017d7a5d9b306f095c5fa8e948db5fbc47f87af/src/SimulatorObjects/Person.java#L81) basic attributes (gender, birthrate death rate) <br> - aligned [collision method](https://github.com/mhayescs19/p1-mosaic/blob/5017d7a5d9b306f095c5fa8e948db5fbc47f87af/src/SimulatorObjects/Person.java#L99) to involve age in deciding birth <br> - created [ageManager](https://github.com/mhayescs19/p1-mosaic/blob/5017d7a5d9b306f095c5fa8e948db5fbc47f87af/src/SimulatorObjects/Person.java#L129) which handles updating age each time paint is called (tied to event of timer, not event of collision) <br> <br> **SCRUMBOARD TICKET LINKS** <br> - [Person Class Method & simControl Setup](https://github.com/mhayescs19/p1-mosaic/projects/1#card-51528468) <br> - [Assigning Basic Person Attributes](https://github.com/mhayescs19/p1-mosaic/projects/1#card-51221835) |
 | Sara Beniwal | |
 
+## 12/18 Weekly Project Contributions and Artifacts Log
 ### Week 3
 | Contributor | Self Grade /20 | Scrum Grade /5 | Artifacts |
 | ----------- | --------- |  --------- |  --------- |
