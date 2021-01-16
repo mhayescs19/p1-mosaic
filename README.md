@@ -17,8 +17,9 @@ Increase in population is determined by dot interaction (event based), while dec
     <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-12146723"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/12_11-board-column-button.png" width="30%" height="auto"><a/>
 
 ## Runtime Guidance For Entire Project
-1. Clone the project repository using the branch named DataBranch
-2. Run from Main.java (inside of the "Main" package) OR set up configuration to Main
+1. Clone the project repository.
+2. Open the src directory, open the Main package, and open the Main.java file.
+3. Run from Main.java (inside of the "Main" package) OR set up configuration to Main.
 <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-in-main.png" height="auto" width="52%"> <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-configuration.png" width="40%" height="auto">
 
 ## Featured ScrumBoard Tickets (20/20)
