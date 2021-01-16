@@ -69,8 +69,9 @@ public class SimControl {
             Person newPerson = new Person(this);
             newPerson.setID(i);
             population.add(newPerson);
+            System.out.println("SimControl.java - Population: Person " + i + " age: " + newPerson.getAge() + " added to ArrayList");
         }
-
+        System.out.println("SimControl.java - Population size: " + population.size());
         painter.Start(); // starts the painter
 
     }
@@ -88,15 +89,20 @@ public class SimControl {
 
             for (Person otherPerson : population) { // cycles through entire population (Java style loop)
                 if (firstPerson.collision(otherPerson)) { // compares firstPerson against every other object in population for a collision
+                    //System.out.println("SimControl.java - Person: Collision detected!");
                     double[] genetics = firstPerson.collisionDetected(otherPerson);
 
-                    if (genetics[0] == 1) { // current value to represent a birth
+                    if (genetics[0] == -1.0) { // current value to represent a birth
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
 
                         population.add(newBaby); // new birth of person added to master population list
+                        System.out.println("SimControl.java - Person: baby born!");
                         currentPopulation++;
                     }
                 }
+            }
+            if (i == 0) {
+                this.updateYear();
             }
         }
 
@@ -115,11 +121,12 @@ public class SimControl {
         {
 
 
-            for(Wall wall: painter.getWalls()) // for each
+            /*for(Wall wall: painter.getWalls()) // for each
             {
                    // check for collision with walls in here
                if ( person.collision(wall))
                {
+                   System.out.println("SimControl.java - Person " + person.getID() + " hit a wall");
                         if (wall.vertical)
                         {
                             person.CollisionVertical();
@@ -129,7 +136,7 @@ public class SimControl {
                             person.CollisionHorizontal();
                         }
                }
-            }
+            }*/
             person.ageManager();
 
             /**
@@ -176,10 +183,12 @@ public class SimControl {
 
     public void updateYear() {
         Time++;
-        if (Time%5 == 0){
+        if (Time % 15 == 0){
             currentYear++;
+            System.out.println("SimControl.java - 1 year has passed. Current year: " + currentYear);
+
         }
-        System.out.println("updateYear works."); // Test code to see if method runs properly
+        //System.out.println("updateYear works."); // Test code to see if method runs properly
     }
 
     /**
