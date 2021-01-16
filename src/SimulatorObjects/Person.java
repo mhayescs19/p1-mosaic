@@ -44,7 +44,7 @@ public class Person extends Movement {
     double chanceDeathInitial;
     double chanceBirth;
     double percentageGender;
-    double simSpeed;
+    double simSpeed = 1;
 
     /**
      * Default constructor
@@ -56,6 +56,13 @@ public class Person extends Movement {
         this.chanceBirth = simControl.chanceBirth;
         this.chanceDeathInitial = simControl.chanceDeathInitial;
         this.percentageGender = simControl.percentageGender;
+
+        this.myHealth = Health.alive;
+        this.age = randomAge();
+
+        //temp to avoid null
+        this.myAgeCategory = Age.baby;
+
         this.init();
     }
 
@@ -71,6 +78,7 @@ public class Person extends Movement {
         this.percentageGender = simControl.percentageGender;
         this.simSpeed = simControl.simSpeed;
 
+        this.myHealth = Health.alive;
         this.age = 0;
 
         this.init();
@@ -102,8 +110,8 @@ public class Person extends Movement {
     public double[] collisionDetected(Person otherPerson) {
 
         // default values for variables used in scope of if, but need to be saved
-        double inheritedDeathRate = -1.0;
-        double childBirthRate = -1.0;
+        double inheritedDeathRate = -1;
+        double childBirthRate = -1;
         int birth = 0;
 
         if (this.verifyAge() && otherPerson.verifyAge()) { // verifies both individuals are of age
@@ -132,19 +140,29 @@ public class Person extends Movement {
     public void ageManager() {
         this.timeScale += 1; // counts time in year by collecting a value each time the frame is repainted
 
-        if (timeScale == 5 * simSpeed) { // every five ticks, one year passes (default time if simSpeed = 1.0)
+        if (timeScale == 15 * simSpeed && this.getMyHealth() == Health.alive) { // every five ticks, one year passes (default time if simSpeed = 1.0) and person is still alive
             timeScale = 0; // resets time scale
             this.age += 1; // one year is added
 
-            if (this.age == 60) { // once person reaches age 60, the death rate starts to take effect
+            if (this.age >= 60) { // once person reaches age 60, the death rate starts to take effect
                 if (Math.random() < this.myDeathRate) { // "first trial" - can the person survive the initial application of death rate
                     this.myHealth = Health.dead;
+                    System.out.println("Person.java - Person " + this.getID() + " has died. Person " + this.getID() + " was " + this.getAge());
+                } else {
+                    this.myDeathRate = Math.log(this.age - 58) - 1 / Math.log(2); // once a person is over the age of 60, their death rate will increase along an  exponential eqs
+                    System.out.println("Person " + this.getID() + " new death rate: " + this.myDeathRate);
                 }
-            } else if (this.age > 60) { // once a person is over the age of 60, their death rate will increase along an  exponential eqs
-                this.myDeathRate = Math.pow(2.0, this.age - 57.7);
             }
             setAgeCategory(); // supplemental categorization of new age
         }
+    }
+    /**
+     * Simple randomization of age for starting population
+     */
+    public int randomAge() {
+        int randomAge =  (int) (Math.random() * 60); // random 0 < age < 60 inclusive
+
+        return randomAge;
     }
 
     /**
@@ -192,10 +210,11 @@ public class Person extends Movement {
 
     public Age getMyAgeCategory() { return this.myAgeCategory; }
 
-    public boolean isDead() {
-        return this.myHealth == Health.dead;
-    }
+    public Health getMyHealth() { return this.myHealth; }
 
+    public boolean isDead() { return this.myHealth == Health.dead; }
+
+    public int getID() { return this.ID; }
 
     // Setters for class variables
     public void setID(int id){ this.ID = id;}
@@ -225,5 +244,6 @@ public class Person extends Movement {
     }
 
 
-
 }
+
+
