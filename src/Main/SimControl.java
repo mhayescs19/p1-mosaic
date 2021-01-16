@@ -54,7 +54,6 @@ public class SimControl {
 
        this.view = new MainGUI();
         view.setVisible(true);
-
         this.beginSimulation();
     }
 
@@ -69,7 +68,6 @@ public class SimControl {
         for (int i = 0; i < 25; i++) { // initial creation of population
             Person newPerson = new Person(this);
             newPerson.setID(i);
-
             population.add(newPerson);
         }
 
@@ -138,9 +136,9 @@ public class SimControl {
              * If dead, no velocity, otherwise velocity remains
              */
             if (person.isDead()) { // death condition
-                person.Velcoity0();
+                person.Velocity0();
             } else {
-                person.Velcoity();//updates velocity
+                person.Velocity();//updates velocity
             }
 
             switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
