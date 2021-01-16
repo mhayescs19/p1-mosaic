@@ -102,8 +102,8 @@ public class Person extends Movement {
     public double[] collisionDetected(Person otherPerson) {
 
         // default values for variables used in scope of if, but need to be saved
-        double inheritedDeathRate = -1.0;
-        double childBirthRate = -1.0;
+        double inheritedDeathRate = -1;
+        double childBirthRate = -1;
         int birth = 0;
 
         if (this.verifyAge() && otherPerson.verifyAge()) { // verifies both individuals are of age
@@ -132,7 +132,7 @@ public class Person extends Movement {
     public void ageManager() {
         this.timeScale += 1; // counts time in year by collecting a value each time the frame is repainted
 
-        if (timeScale == 5 * simSpeed) { // every five ticks, one year passes (default time if simSpeed = 1.0)
+        if (timeScale == 500 * simSpeed) { // every five ticks, one year passes (default time if simSpeed = 1.0)
             timeScale = 0; // resets time scale
             this.age += 1; // one year is added
 

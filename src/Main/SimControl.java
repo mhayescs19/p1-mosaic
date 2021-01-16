@@ -69,8 +69,9 @@ public class SimControl {
             Person newPerson = new Person(this);
             newPerson.setID(i);
             population.add(newPerson);
+            System.out.println("Population: Person " + i + " added to array list");
         }
-
+        System.out.print("Population size: " + population.size());
         painter.Start(); // starts the painter
 
     }
@@ -88,12 +89,14 @@ public class SimControl {
 
             for (Person otherPerson : population) { // cycles through entire population (Java style loop)
                 if (firstPerson.collision(otherPerson)) { // compares firstPerson against every other object in population for a collision
+                    System.out.println("Person: Collision detected!");
                     double[] genetics = firstPerson.collisionDetected(otherPerson);
 
                     if (genetics[0] == 1) { // current value to represent a birth
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
 
                         population.add(newBaby); // new birth of person added to master population list
+                        System.out.println("Person: baby born!");
                         currentPopulation++;
                     }
                 }
@@ -131,6 +134,7 @@ public class SimControl {
                }
             }
             person.ageManager();
+            this.updateYear();
 
             /**
              * If dead, no velocity, otherwise velocity remains
@@ -175,10 +179,12 @@ public class SimControl {
 
     public void updateYear() {
         Time++;
-        if (Time%5 == 0){
+        if (Time%500 == 0){
             currentYear++;
+            System.out.println("Year passed. Current year: " + currentYear);
+
         }
-        System.out.println("updateYear works."); // Test code to see if method runs properly
+        //System.out.println("updateYear works."); // Test code to see if method runs properly
     }
 
     /**
