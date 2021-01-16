@@ -11,7 +11,7 @@
 ### OVERVIEW ([PROJECT PLAN LINK](https://docs.google.com/document/d/1xFTt2SqCLsW6-2fDmcQppuPO6XvYHVz6I5cnbozqs2U/edit?usp=sharing))
 Increase in population is determined by dot interaction (event based), while decrease is based on time. A simple simulation that models the change of population based on factors such as rate of reproduction, death, and interaction. Algorithms will be used to adjust each person’s chances of dying or reproducing based on their age and interaction with one another. If time allows, an algorithm that introduces a virus in the middle of the simulation will be added in order to model the change of population in the middle of a pandemic environment. At the end of the simulation, a data table will be displayed with data such as average increase in population over the years, notable increases or decreases in population with year number, in number of deaths a year, in offspring produced, etc. A database will be added in the future to store simulation data from multiple simulations.
 
-## Scrum Board
+## ScrumBoard
 <a href="https://github.com/mhayescs19/p1-mosaic/projects/1"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/scrum-board-button.png" width="30%" height="auto"><a/> 
   <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-11956730"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/12_18-board-column-button.png" width="30%" height="auto"><a/> 
     <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-12146723"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/12_11-board-column-button.png" width="30%" height="auto"><a/>
@@ -21,7 +21,7 @@ Increase in population is determined by dot interaction (event based), while dec
 2. Run from Main.java (inside of the "Main" package) OR set up configuration to Main
 <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-in-main.png" height="auto" width="52%"> <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-configuration.png" width="40%" height="auto">
 
-## Featured Tickets
+## Featured ScrumBoard Tickets
 1. [Integrating ConfigGUI with SimControl Using ConfigControl](https://github.com/mhayescs19/p1-mosaic/issues/33) <br> For the team, this was a big step towards getting the project to actually run and visually experience all of our past hard work. Got the MainGUI where simulation happens to pop up after ConfigGUI "start" button is pressed. Every member of the group participated in this ticket.
 
 2. [ConfigGUI](https://github.com/mhayescs19/p1-mosaic/issues/7) <br> ConfigGUI is where the user enters intial specifications for simulation, length of simulation, and starts the simulation. Sliders, dropdown menus, Textfields, and buttons from JFrame are all utilized in this class. Initiliazes all the variables like inital population and passes them to SimControl. Created by Nakul Nandhakumar.
