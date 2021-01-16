@@ -164,6 +164,7 @@ public class SimControl {
             }
 
             g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+
         }
     }
 
