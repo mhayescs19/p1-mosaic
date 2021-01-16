@@ -34,7 +34,7 @@ public class Painter extends Panel{
         this.simControl = sim; // pass the simControl in a parameter
         jFrame = new JFrame(name_of_panel);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(600,800);
+        jFrame.setSize(1400,1800);
         jFrame.add(this); // add this class to the Jframe
         jFrame.setVisible(true);
         walls = new ArrayList<>();
