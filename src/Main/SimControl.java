@@ -157,6 +157,7 @@ public class SimControl {
             }
             if (person.isDead()) { // death condition
                 person.Velocity0();
+                currentPopulation--;
             } else {
                 person.Velocity();//updates velocity
             }
@@ -176,6 +177,7 @@ public class SimControl {
             }
 
             g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+
         }
     }
 
