@@ -91,13 +91,12 @@ public class SimControl {
                 if (firstPerson == otherPerson){
                     continue;
                 }
+
                 if (firstPerson.collision(otherPerson)) { // compares firstPerson against every other object in population for a collision
                     System.out.println("SimControl.java - Person: Collision detected!");
+                    double[] genetics = firstPerson.collisionDetected(otherPerson);
                     firstPerson.CollisionHorizontal();
                     firstPerson.CollisionVertical();
-                    otherPerson.CollisionHorizontal();
-                    otherPerson.CollisionVertical();
-                    double[] genetics = firstPerson.collisionDetected(otherPerson);
 
                     if (genetics[0] == -1.0) { // current value to represent a birth
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
@@ -149,17 +148,11 @@ public class SimControl {
             /**
              * If dead, no velocity, otherwise velocity remains
              */
-            if (person.vx < 0){
-                System.out.println(person.vx);
-            }
-            if (person.vy < 0){
-                System.out.println(person.vy);
-            }
             if (person.isDead()) { // death condition
                 person.Velocity0();
                 currentPopulation--;
-            } else {
-                person.Velocity();//updates velocity
+            }  else {
+                 person.Velocity(); //updates velocity
             }
 
             switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
