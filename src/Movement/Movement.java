@@ -52,8 +52,8 @@ public abstract class Movement extends CollisionCheck {
 
         public void Velocity()
         {
-            this.x +=vx;
-            this.y+=vy;
+            super.x +=vx;
+            super.y+=vy;
             if (this.x<0||this.x>xEnd)
             {
                 vx*=-1;

@@ -144,7 +144,9 @@ public class SimControl {
              */
             if (person.isDead()) { // death condition
                 person.Velocity0();
+                population.remove(person);
                 currentPopulation--;
+                continue;
             } else {
                 person.Velocity();//updates velocity
             }
