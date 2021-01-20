@@ -104,7 +104,7 @@ public class Painter extends Panel{
      */
     public void Start()
     {
-        int temp = 16; // will be replace by a dynamic var from sim control, represents delay for timer
+        int temp = 32; // will be replace by a dynamic var from sim control, represents delay for timer
         timer = new Timer(temp,this); // temp is delay is milliseconds, this is the class that implements the action listen
         timer.start(); // starts the timer
         jFrame.setVisible(true); // not sure if this is necessary  but want to make sure that the jpanel is updated with the timer and paint
@@ -122,7 +122,7 @@ public class Painter extends Panel{
     @Override //master paint class
     public void paint(Graphics g) {
             // add paint stuff
-            Time += 16; // constant will change this
+        Time += 32; // constant will change this
         super.paintComponent(g);
         view.PaintMainView(g); // sara code but with set up to be painted every pass by the timer
         drawWalls(g);
