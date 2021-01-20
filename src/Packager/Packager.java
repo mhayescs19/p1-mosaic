@@ -11,6 +11,8 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.lang.reflect.Field;
+import java.util.List;
+
 /**
  * packages data to be transferred to nakul's code
  * thinking that this will have some datastructures that will hold onto the code per iteration
@@ -18,7 +20,10 @@ import java.lang.reflect.Field;
  *
  */
 public class Packager {
-  private final static String yearvar = "currentYear"; //assgined pre compiled due to how I want this to work this will be used to find the value of the year from SimControl
+  /**
+   * var that design to grab the field currently*/
+  private final static String yearvar = "currentYear"; //assigned pre compiled due to how I want this to work this will be used to find the value of the year from SimControl
+  private final static ArrayList<String> RejectedVars = new ArrayList<>();
   private SimControl simControl;
   private   HashMap<String, ArrayList<AbstractMap.SimpleEntry<Integer,Object>>> hashMap; //for each type of data we have as an array list attached to it with the assign data type of a tuple pair of year and value
     public Packager(SimControl simControl) throws IllegalAccessException {
@@ -58,6 +63,48 @@ public class Packager {
         //overwrites the current key position with one with the array list
       }
     }
+    public boolean rejectVar(String string)
+    {
+        return false;
+    }
+
+  /**
+   * really don't like doing this but cant think of a way to do it systematically that would just a efficient
+   * would say hard coding in the var names is another thing i don't like but I don't know how to get around it
+   *
+   */
+  public void ArrayFiller()
+    {
+      if (RejectedVars.isEmpty())
+      {
+          RejectedVars.add("percentageGender");
+          RejectedVars.add("chanceBirth");
+          RejectedVars.add("EndValue");
+          RejectedVars.add("currentYear");
+          RejectedVars.add("simSpeed");
+
+      }
+      else {
+        System.out.println("list is already initialized");
+      }
+    }
+
+
+
+
+/*
+         tracked vars all others will need to be filterd out so they wont be added to the list
+        currentYear;
+       initialYear;
+        currentPop;
+        initialPop;
+        numberOfBirths;
+        numberOfDeaths;
+        numberMale;
+        numberFemale; // will probably to play with the array list from micheal with poulation to get this data will most likely use lambda to get the data
+
+        */
+
 
 
 

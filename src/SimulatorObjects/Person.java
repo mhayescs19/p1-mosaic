@@ -227,12 +227,12 @@ public class Person extends Movement {
     //getter for x
     public int getX()
     {
-        return x;
+        return super.x;
     }
     // getter for y
     public int getY()
     {
-        return y;
+        return super.y;
     }
     public int getWidth()
     {

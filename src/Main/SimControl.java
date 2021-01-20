@@ -87,10 +87,16 @@ public class SimControl {
         for (int i = 0; i < population.size(); i++) { // master loop through entire population
             Person firstPerson = population.get(i);
 
-            for (Person otherPerson : population) { // cycles through entire population (Java style loop)
+            for (Person otherPerson : population) {// cycles through entire population (Java style loop)
+                if (firstPerson == otherPerson){
+                    continue;
+                }
+
                 if (firstPerson.collision(otherPerson)) { // compares firstPerson against every other object in population for a collision
-                    //System.out.println("SimControl.java - Person: Collision detected!");
+                    System.out.println("SimControl.java - Person: Collision detected!");
                     double[] genetics = firstPerson.collisionDetected(otherPerson);
+                    firstPerson.CollisionHorizontal();
+                    firstPerson.CollisionVertical();
 
                     if (genetics[0] == -1.0) { // current value to represent a birth
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
@@ -144,8 +150,11 @@ public class SimControl {
              */
             if (person.isDead()) { // death condition
                 person.Velocity0();
-            } else {
-                person.Velocity();//updates velocity
+                currentPopulation--;
+                population.remove(person);
+                continue;
+            }  else {
+                person.Velocity(); //updates velocity
             }
 
             switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
@@ -163,6 +172,7 @@ public class SimControl {
             }
 
             g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+
         }
     }
 
@@ -210,7 +220,7 @@ public class SimControl {
     public static void main(String[] args) {
         ConfigControl con = new ConfigControl();
         SimControl simcont = new SimControl(con);
-       simcont.endSimulation();
+        simcont.endSimulation();
         simcont.updateYear();
 
     }

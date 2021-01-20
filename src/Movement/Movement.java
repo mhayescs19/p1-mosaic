@@ -29,8 +29,8 @@ public abstract class Movement extends CollisionCheck {
           // xEnd , yEnd set to boarders of the screen
           // set vx and vy to speeds
           // x and y velocity will random depending on object
-          this.width =50;
-         this.height =50;
+          this.width = 20;
+         this.height = 20;
           Genvelo();
           GenXY();
 
@@ -43,8 +43,8 @@ public abstract class Movement extends CollisionCheck {
         // x and y velocity will random depending on object
         xEnd = width;
         yEnd = height;
-        this.width =50;
-        this.height =50;
+        this.width = 20;
+        this.height = 20;
         Genvelo();
         GenXY();
 
@@ -52,6 +52,12 @@ public abstract class Movement extends CollisionCheck {
 
         public void Velocity()
         {
+            if (vx<0){
+                System.out.println("Negative vx");
+            }
+            if (vy<0){
+                System.out.println("Negative vy");
+            }
             this.x +=vx;
             this.y+=vy;
             if (this.x<0||this.x>xEnd)
