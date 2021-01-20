@@ -34,7 +34,7 @@ public class Painter extends Panel{
         this.simControl = sim; // pass the simControl in a parameter
         jFrame = new JFrame(name_of_panel);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(1400,1800);
+        jFrame.setSize(1200,900);
         jFrame.add(this); // add this class to the Jframe
         jFrame.setVisible(true);
         walls = new ArrayList<>();
@@ -122,7 +122,7 @@ public class Painter extends Panel{
     @Override //master paint class
     public void paint(Graphics g) {
             // add paint stuff
-            Time += 16; // constant will change this
+        Time += 16; // constant will change this
         super.paintComponent(g);
         view.PaintMainView(g); // sara code but with set up to be painted every pass by the timer
         drawWalls(g);
