@@ -151,8 +151,10 @@ public class SimControl {
             if (person.isDead()) { // death condition
                 person.Velocity0();
                 currentPopulation--;
+                population.remove(person);
+                continue;
             }  else {
-                 person.Velocity(); //updates velocity
+                person.Velocity(); //updates velocity
             }
 
             switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
