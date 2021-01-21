@@ -22,6 +22,10 @@ Increase in population is determined by dot interaction (event based), while dec
 3. Run from Main.java (inside of the "Main" package) OR set up configuration to Main.
 <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-in-main.png" height="auto" width="52%"> <img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/runtime-configuration.png" width="40%" height="auto">
 
+## 1/15 Weekly Project Contributions and Artifacts Log
+### Week 6
+1. [Debug and Activate Births & Dynamically Size ArrayList After Iteration](https://github.com/mhayescs19/p1-mosaic/issues/41) <br> Before this fix, a new birth would throw errors, crashing the program. As well, a new death would throw a single error, but the program could continue. Created by Michael Hayes <br> **Contents**<br> - Indentified bug: ArrayLists cannot be resized (elements added or removed) during an iteration check. <br> - Fix:   1) respective [temporary ArrayLists](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L27) for births and deaths created <br> 2) [Births](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L107) and [deaths](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L159) detected during check of panel added to respective temp lists <br> 3) New method [recountPopulation](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L225) created to activate respective additions and deletions to master population ArrayList **AFTER** all iteration checks of the repaint call to avoid mutating the master population ArrayList mid iteration
+
 ## Featured ScrumBoard Tickets (20/20)
 1. [Integrating ConfigGUI with SimControl Using ConfigControl](https://github.com/mhayescs19/p1-mosaic/issues/33) <br> For the team, this was a big step towards getting the project to actually run and visually experience all of our past hard work. Got the MainGUI where simulation happens to pop up after ConfigGUI "start" button is pressed. Every member of the group participated in this ticket.
 
@@ -29,7 +33,7 @@ Increase in population is determined by dot interaction (event based), while dec
 
 3. [Paint](https://github.com/mhayescs19/p1-mosaic/issues/17) <br> This class manages a timer which counts by the millisecond and repeatedly calls a paint method very frequently to draw the people (circles) onto the panel so that the balls appear to move to the screen. Also paints the walls and background that the balls will move on. Created by Andrew Pegg.
 
-4. [SimControl & Person](https://github.com/mhayescs19/p1-mosaic/issues/29) <br> The Person class  creates the "people" of the population simulation and all of their details such as age, health status, birth chance, death chance, etc. SimControl manages the execution of the simulation and calls all the methods in order to run the simulation. It manages the status of each person. Created by Michael Hayes.
+4. [SimControl & Person](https://github.com/mhayescs19/p1-mosaic/issues/29) <br> The Person class creates the "people" of the population simulation and all of their details such as age, health status, birth chance, death chance, etc. SimControl manages the execution of the simulation and calls all the methods in order to run the simulation. It manages the status of each person. Created by Michael Hayes.
 
 5. [MainGUI](https://github.com/mhayescs19/p1-mosaic/issues/8) <br> This class creates one of the panels that is needed for the balls to appear on. It utilizes a paint method from the class Paint to display the ovals which is the island. It has a pause button as well which will be implemented in the project later. Created by Sara Beniwal. 
 
