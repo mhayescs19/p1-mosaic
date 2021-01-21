@@ -150,4 +150,3 @@ public class Painter extends Panel{
     }
 
 }
-//todo add a constructor for walls so they can be painted onto the panel

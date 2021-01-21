@@ -27,6 +27,7 @@ public class Packager {
   private SimControl simControl;
   private   HashMap<String, ArrayList<AbstractMap.SimpleEntry<Integer,Object>>> hashMap; //for each type of data we have as an array list attached to it with the assign data type of a tuple pair of year and value
     public Packager(SimControl simControl) throws IllegalAccessException {
+        ArrayFiller();
       this.simControl = simControl;
       hashMap = new HashMap<>();// initializes the hash map
       // need to add way adding data in
@@ -37,10 +38,29 @@ public class Packager {
       for(Field field: simControl.getClass().getFields()) // fancy code that pulls public vars names and will be used to add names to the hash map.
       {
           System.out.println(field.getName() + " = " + field.get(simControl)); // just a tester will be used later on
-          if (!field.getName().equals("currentYear")) {
-            hashMap.put(field.getName(), null); // sets the hashmap key to field name then adds a null position for now
+          // searches if the var is with dictionary of rejected vars
+          if (!RejectedVars.contains(field.getName())) {
+             // sets the hashmap key to field name then adds a null position for now
             // this make a key for all public variables found in the class simControl
+              if (field.getName().equals("population"))
+              {
+                  // need to do some mutilation of the data will add a separate method for this
+                  System.out.println("place holder text");
+              }
+              if (field.getName().equals("initialYear"))
+              {
+                  // java forces you to make an allocation out side of the hash map
+                  ArrayList<AbstractMap.SimpleEntry<Integer,Object>> temp = new ArrayList<>();
+                  temp.add(new AbstractMap.SimpleEntry<>(0,field.get(simControl))); // this will be fix in the set wont be added to after first pass
+                  hashMap.put(field.getName(), temp);
+              }
+              else
+              {
+                  hashMap.put(field.getName(), null);
+              }
           }
+          //separator for arraylist population
+
       }
       //just used in order to construct hashmap names
     }
@@ -63,10 +83,6 @@ public class Packager {
         //overwrites the current key position with one with the array list
       }
     }
-    public boolean rejectVar(String string)
-    {
-        return false;
-    }
 
   /**
    * really don't like doing this but cant think of a way to do it systematically that would just a efficient
@@ -82,6 +98,10 @@ public class Packager {
           RejectedVars.add("EndValue");
           RejectedVars.add("currentYear");
           RejectedVars.add("simSpeed");
+          RejectedVars.add("chanceDeathInitial");
+          RejectedVars.add("EndCondition");
+          RejectedVars.add("EndValue");
+
 
       }
       else {
@@ -90,7 +110,19 @@ public class Packager {
     }
 
 
+    public void arrayListMangament(Field field)
+    {
+        // first is to track weather we have the right field
+        if (field.getType().equals(java.util.ArrayList.class))
+        {
+                System.out.println("conditional statement worked and figure out this was an arraylist");
 
+        }
+        else
+        {
+            System.out.println("either the conditional statement failed or this was not an arraylist");
+        }
+    }
 
 /*
          tracked vars all others will need to be filterd out so they wont be added to the list
