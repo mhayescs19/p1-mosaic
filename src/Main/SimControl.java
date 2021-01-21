@@ -23,6 +23,9 @@ public class SimControl {
     public double simulationSpeed;
     private Painter painter;
     ArrayList<Person> population;
+
+    ArrayList<Person> newChildren;
+    ArrayList<Person> deadPeople;
     // Values from ConfigGUI
     public int initialPopulation;
     public int currentPopulation;
@@ -101,12 +104,13 @@ public class SimControl {
                     if (genetics[0] == -1.0) { // current value to represent a birth
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
 
-                        population.add(newBaby); // new birth of person added to master population list
+                        newChildren.add(newBaby); // new birth of person added to temporary ArrayList to avoid mutating array during iteration
                         System.out.println("SimControl.java - Person: baby born!");
                         currentPopulation++;
                     }
                 }
             }
+
             if (i == 0) {
                 this.updateYear();
             }
@@ -151,7 +155,7 @@ public class SimControl {
             if (person.isDead()) { // death condition
                 person.Velocity0();
                 currentPopulation--;
-                population.remove(person);
+                deadPeople.add(person); // new death of person added to temporary ArrayList to avoid mutating array during iteration
                 continue;
             }  else {
                 person.Velocity(); //updates velocity
@@ -174,6 +178,8 @@ public class SimControl {
             g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
 
         }
+
+        recountPopulation();
     }
 
     public void endSimulation(){
@@ -209,8 +215,20 @@ public class SimControl {
         return new AbstractMap.SimpleEntry<>(painter.getWidth(), painter.getHeight());
     }
 
+    /**
+     * Recounts population accounting for new births and dead people to avoid iteration errors
+     */
+    public void recountPopulation(){
+        for (Person newbaby: newChildren) { // pulls individuals from separate temporary array that is transfered into to master population
+            population.add(newbaby);
+        }
+        newChildren.clear(); // clears temporary newChildren from iteration (one call of painter)
 
-
+        for (Person deadIndividual : deadPeople) { // cycles through temporary arrayList to mutate master population
+            population.remove(deadIndividual);
+        }
+        deadPeople.clear(); // clears deadPeople from iteration (one call of painter)
+    }
 
 
     /**
