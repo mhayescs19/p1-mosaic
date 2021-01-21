@@ -79,7 +79,7 @@ public class Person extends Movement {
         this.simSpeed = simControl.simSpeed;
 
         this.myHealth = Health.alive;
-        this.age = 0;
+        this.age = randomAge();
 
         this.init();
     }

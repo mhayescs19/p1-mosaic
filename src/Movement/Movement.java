@@ -53,10 +53,10 @@ public abstract class Movement extends CollisionCheck {
         public void Velocity()
         {
             if (vx<0){
-                System.out.println("Negative vx");
+                //System.out.println("Negative vx");
             }
             if (vy<0){
-                System.out.println("Negative vy");
+                //System.out.println("Negative vy");
             }
             this.x +=vx;
             this.y+=vy;

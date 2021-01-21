@@ -23,6 +23,9 @@ public class SimControl {
     public double simulationSpeed;
     private Painter painter;
     ArrayList<Person> population;
+
+    ArrayList<Person> newChildren = new ArrayList<>();
+    ArrayList<Person> deadPeople = new ArrayList<>();
     // Values from ConfigGUI
     public int initialPopulation;
     public int currentPopulation;
@@ -45,7 +48,7 @@ public class SimControl {
         this.chanceBirth = control.initialBirthChance;
         this.percentageGender = control.initialPercentageMales;
         this.initialPopulation = control.initialPop;
-        this.currentPopulation = control.initialPop;
+        this.currentPopulation = 25;//control.initialPop;
         this.EndCondition = control.EndCondition;
         this.EndValue = control.EndValue;
         this.initialYear = control.initialYear;
@@ -93,20 +96,21 @@ public class SimControl {
                 }
 
                 if (firstPerson.collision(otherPerson)) { // compares firstPerson against every other object in population for a collision
-                    System.out.println("SimControl.java - Person: Collision detected!");
+                    //System.out.println("SimControl.java - Person: Collision detected!");
                     double[] genetics = firstPerson.collisionDetected(otherPerson);
                     firstPerson.CollisionHorizontal();
                     firstPerson.CollisionVertical();
 
-                    if (genetics[0] == -1.0) { // current value to represent a birth
+                    if (genetics[0] == 1.0) { // current value to represent a birth
                         Person newBaby = new Person(this, genetics); // sim birth specific constructor used of Person
 
-                        population.add(newBaby); // new birth of person added to master population list
+                        newChildren.add(newBaby); // new birth of person added to temporary ArrayList to avoid mutating array during iteration
                         System.out.println("SimControl.java - Person: baby born!");
                         currentPopulation++;
                     }
                 }
             }
+
             if (i == 0) {
                 this.updateYear();
             }
@@ -122,9 +126,9 @@ public class SimControl {
      */
     public void PaintPopulation(Graphics g) // graphics is the panel
     {
-
-            updatePopulation(); // calls Micheal's code for collision check with other people and updates the arraylist
-            for (Person person : population) {
+        updatePopulation(); // calls Micheal's code for collision check with other people and updates the arraylist
+        for (Person person : population)
+        {
 
 
             /*for(Wall wall: painter.getWalls()) // for each
@@ -143,37 +147,42 @@ public class SimControl {
                         }
                }
             }*/
-                person.ageManager();
+            person.ageManager();
 
-                /**
-                 * If dead, no velocity, otherwise velocity remains
-                 */
-                if (person.isDead()) { // death condition
-                    person.Velocity0();
-                    currentPopulation--;
-                    population.remove(person);
-                    continue;
-                } else {
-                    person.Velocity(); //updates velocity
-                }
-
-                switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
-                    case youth -> g.setColor(Color.decode("#FFF700")); // yellow
-                    case baby -> g.setColor(Color.decode("#FFD100")); // yellow-orange
-                    case teen -> g.setColor(Color.decode("#FFB400")); // orange
-                    case youngAdult -> g.setColor(Color.decode("#FF8300")); // dark orange
-                    case middleAge -> g.setColor(Color.decode("#BF0202")); // red
-                    case senior -> g.setColor(Color.decode("#CB008F")); // purple
-                    case seniorPlus -> g.setColor(Color.decode("#69006D")); // dark purple
-                    default -> {
-                        g.setColor(Color.BLACK);
-                        System.out.println("Age category not found");
-                    }
-                }
-
-                g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
-
+            /**
+             * If dead, no velocity, otherwise velocity remains
+             */
+            if (person.isDead()) { // death condition
+                person.Velocity0();
+                currentPopulation--;
+                System.out.println("SimControl.java - The current population is now " + currentPopulation);
+                deadPeople.add(person); // new death of person added to temporary ArrayList to avoid mutating array during iteration
+                continue;
+            }  else {
+                person.Velocity(); //updates velocity
             }
+
+            switch (person.getMyAgeCategory()) { // color shift of dot based on age of person; dynamic color shift later with RGB...?
+                case youth -> g.setColor(Color.decode("#FFF700")); // yellow
+                case baby -> g.setColor(Color.decode("#FFD100")); // yellow-orange
+                case teen -> g.setColor(Color.decode("#FFB400")); // orange
+                case youngAdult -> g.setColor(Color.decode("#FF8300")); // dark orange
+                case middleAge -> g.setColor(Color.decode("#BF0202")); // red
+                case senior -> g.setColor(Color.decode("#CB008F")); // purple
+                case seniorPlus -> g.setColor(Color.decode("#69006D")); // dark purple
+                default -> {
+                    g.setColor(Color.BLACK);
+                    System.out.println("Age category not found");
+                }
+            }
+
+            g.fillOval(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+
+        }
+
+        if (newChildren.size() >= 0) {
+            recountPopulation();
+        }
 
     }
 
@@ -210,8 +219,20 @@ public class SimControl {
         return new AbstractMap.SimpleEntry<>(painter.getWidth(), painter.getHeight());
     }
 
+    /**
+     * Recounts population accounting for new births and dead people to avoid iteration errors
+     */
+    public void recountPopulation(){
+        for (Person deadIndividual : deadPeople) { // cycles through temporary arrayList to mutate master population
+            population.remove(deadIndividual);
+        }
+        deadPeople.clear(); // clears deadPeople from iteration (one call of painter)
 
-
+        for (Person newbaby: newChildren) { // pulls individuals from separate temporary array that is transfered into to master population
+            population.add(newbaby);
+        }
+        newChildren.clear(); // clears temporary newChildren from iteration (one call of painter)
+    }
 
 
     /**
