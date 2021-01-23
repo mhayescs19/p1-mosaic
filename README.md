@@ -12,8 +12,12 @@
 Increase in population is determined by dot interaction (event based), while decrease is based on time. A simple simulation that models the change of population based on factors such as rate of reproduction, death, and interaction. Algorithms will be used to adjust each person’s chances of dying or reproducing based on their age and interaction with one another. If time allows, an algorithm that introduces a virus in the middle of the simulation will be added in order to model the change of population in the middle of a pandemic environment. At the end of the simulation, a data table will be displayed with data such as average increase in population over the years, notable increases or decreases in population with year number, in number of deaths a year, in offspring produced, etc. A database will be added in the future to store simulation data from multiple simulations.
 ### AP UNITS IN PROJECT
 [LINK](https://docs.google.com/document/d/1n9hqvHHT1ru5K8gSgDt7DpwIyEZGhx0f8VcoV56nmS0/edit)
+
 ## ScrumBoard
 <a href="https://github.com/mhayescs19/p1-mosaic/projects/1"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/scrum-board-button.png" width="30%" height="auto"><a/> 
+  <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-12588132"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/1_22-board-column-button.png" width="30%" height="auto"><a/>
+  <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-12570582"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/1_15-board-column-button.png" width="30%" height="auto"><a/> 
+  <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-12377226"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/1_8-board-column-button.png" width="30%" height="auto"><a/> 
   <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-11956730"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/12_18-board-column-button.png" width="30%" height="auto"><a/> 
     <a href="https://github.com/mhayescs19/p1-mosaic/projects/1#column-12146723"><img src="https://github.com/mhayescs19/p1-mosaic/blob/master/statics/12_11-board-column-button.png" width="30%" height="auto"><a/>
 
@@ -25,11 +29,13 @@ Increase in population is determined by dot interaction (event based), while dec
 
 ## 1/21  Weekly Project Contributions and Artifacts Log
 ### Week 6
-#### 1. [Debug and Activate Births & Dynamically Size ArrayList After Iteration](https://github.com/mhayescs19/p1-mosaic/issues/41)
+### 1. [Debug and Activate Births & Dynamically Size ArrayList After Iteration](https://github.com/mhayescs19/p1-mosaic/issues/41)
 Before this fix, a new birth would throw errors, crashing the program. As well, a new death would throw a single error, but the program could continue. <br> Created by **Michael Hayes** <br> **Contents:** <br> - Indentified bug: ArrayLists cannot be resized (elements added or removed) during an iteration check. <br> **Fixes:** <br> 1) respective [temporary ArrayLists](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L27) for births and deaths created <br> 2) [Births](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L107) and [deaths](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L159) detected during check of panel added to respective temp lists <br> 3) New method [recountPopulation](https://github.com/mhayescs19/p1-mosaic/blob/830e95e1d122221838fc2ee639c0b886536d9479/src/Main/SimControl.java#L225) created to activate respective additions and deletions to master population ArrayList **AFTER** all iteration checks of the repaint call to avoid mutating the master population ArrayList mid iteration
 
-#### 2. [Debug Collision Check, Fix Screen Resolution, and Adjust Dot "People" Size](https://github.com/mhayescs19/p1-mosaic/issues/40) 
+### 2. [Debug Collision Check, Fix Screen Resolution, and Adjust Dot "People" Size](https://github.com/mhayescs19/p1-mosaic/issues/40) 
 Before this fix, the balls (dots) would pass straight through each other and not collide and bounce off of each other. <br> Created by **Nakul Nandhakumar** and **Andrew Pegg** <br> **Contents:** <br> - Identified Bug: In a "for loop" that iterates through each person in an arraylist, a function call "collisionCheck" would be called for each person and check if they were colliding with any other people. Then 2 functions would be called to reverse the x and y velocities for **each** person which caused them to be called again when the other person that was colliding with the original was evauluated, canceling out the change. <br> **Fixes:** <br> 1) The [functions to reverse x and y velocities](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Main/SimControl.java#L101-L102) were called only for the person being evauluated <br> 2) Reduced the [size of the balls](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Movement/Movement.java#L32-L33) to 2/5 the original size to prevent velocity reversals from being called multiple times due to balls still being in contact with each other after the next tick <br> 3) Adjusted [screen resolution](https://github.com/mhayescs19/p1-mosaic/blob/master/src/Panel/Painter.java#L37) to make it so that the panel is within the bounds of the user's screen while still being big enough to have the simulations run (the balls move) smoothly
+
+## 1/15 Weekly Project Contributions and Artifacts Log
 
 ## Featured ScrumBoard Tickets (20/20)
 1. [Integrating ConfigGUI with SimControl Using ConfigControl](https://github.com/mhayescs19/p1-mosaic/issues/33) <br> For the team, this was a big step towards getting the project to actually run and visually experience all of our past hard work. Got the MainGUI where simulation happens to pop up after ConfigGUI "start" button is pressed. Every member of the group participated in this ticket.
@@ -42,7 +48,6 @@ Before this fix, the balls (dots) would pass straight through each other and not
 
 5. [MainGUI](https://github.com/mhayescs19/p1-mosaic/issues/8) <br> This class creates one of the panels that is needed for the balls to appear on. It utilizes a paint method from the class Paint to display the ovals which is the island. It has a pause button as well which will be implemented in the project later. Created by Sara Beniwal. 
 
-## 1/15 Weekly Project Contributions and Artifacts Log
 ### Week 5
 | Contributor | Artifacts |
 | ----------- | ----------- |
